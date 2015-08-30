@@ -135,7 +135,9 @@ namespace ProgrammingQuestions
 
             //TestBST2.Test();
 
-            BinarySearch2.Test();
+            //BinarySearch2.Test();
+
+            RestoreSentenceWithoutSpaces.Test();
         }
     }
 }

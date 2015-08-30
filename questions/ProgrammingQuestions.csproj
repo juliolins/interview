@@ -98,6 +98,7 @@
     <Compile Include="RecoverSentence.cs" />
     <Compile Include="Rectangle.cs" />
     <Compile Include="Regex.cs" />
+    <Compile Include="RestoreSentenceWithoutSpaces.cs" />
     <Compile Include="ReverseString.cs" />
     <Compile Include="Shuffle.cs" />
     <Compile Include="ShuffleNumbers.cs" />
