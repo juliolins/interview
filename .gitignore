@@ -1,0 +1,22 @@
+packages/
+obj/
+bin/
+csx/
+doc/
+target/
+*.bak
+*.exe
+*.dll
+StyleCop.Cache
+
+# Only track the solution-wide packages.config
+packages.config
+!src/.nuget/packages.config
+
+# VS user-specific config
+*.user
+*.suo
+
+# Emacs temp files
+*~
+\#*#
