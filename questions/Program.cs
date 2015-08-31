@@ -137,7 +137,11 @@ namespace ProgrammingQuestions
 
             //BinarySearch2.Test();
 
-            RestoreSentenceWithoutSpaces.Test();
+            //RestoreSentenceWithoutSpaces.Test();
+
+            //BinaryCodeTest.Test();
+
+            AllPermutations2.Test();
         }
     }
 }

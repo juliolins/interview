@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllPermutations.cs" />
     <Compile Include="AllSubsets.cs" />
     <Compile Include="All_Permutations.cs" />
     <Compile Include="BaseConversion.cs" />
@@ -95,7 +96,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuickSort.cs" />
     <Compile Include="ReadWriteSimulation.cs" />
-    <Compile Include="RecoverSentence.cs" />
     <Compile Include="Rectangle.cs" />
     <Compile Include="Regex.cs" />
     <Compile Include="RestoreSentenceWithoutSpaces.cs" />
@@ -110,6 +110,8 @@
     <Compile Include="StringTransformation.cs" />
     <Compile Include="TeamScore.cs" />
     <Compile Include="TextReassemble.cs" />
+    <Compile Include="TopCoder\DecryptBinary.cs" />
+    <Compile Include="TopCoder\Lottery.cs" />
     <Compile Include="TreeAgain.cs" />
     <Compile Include="TreeCommonParent.cs" />
     <Compile Include="TreeCreateLinkedLists.cs" />
