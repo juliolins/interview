@@ -141,7 +141,9 @@ namespace ProgrammingQuestions
 
             //BinaryCodeTest.Test();
 
-            AllPermutations2.Test();
+            //AllPermutations2.Test();
+
+            LinkedListToBST.Test();
         }
     }
 }

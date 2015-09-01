@@ -74,6 +74,7 @@
     <Compile Include="Kadane.cs" />
     <Compile Include="LargestSumArray.cs" />
     <Compile Include="LinkedListAgain.cs" />
+    <Compile Include="LinkedListToBST.cs" />
     <Compile Include="LIS.cs" />
     <Compile Include="Lottery.cs" />
     <Compile Include="LSD.cs" />
