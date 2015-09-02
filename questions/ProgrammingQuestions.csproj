@@ -85,6 +85,7 @@
     <Compile Include="MatrixUniqueRows.cs" />
     <Compile Include="MaximumCircularSubarraySum.cs" />
     <Compile Include="MaximumProductSubarray.cs" />
+    <Compile Include="MaxSumArray.cs" />
     <Compile Include="MediamTwoArrays.cs" />
     <Compile Include="MergeArrays.cs" />
     <Compile Include="MergeSort.cs" />

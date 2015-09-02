@@ -149,7 +149,9 @@ namespace ProgrammingQuestions
 
             //Palindrome2.Test();
 
-            BigInt3.Test();
+            //BigInt3.Test();
+
+            MaxSumArray.Test();
         }
     }
 }
