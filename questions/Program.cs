@@ -143,7 +143,13 @@ namespace ProgrammingQuestions
 
             //AllPermutations2.Test();
 
-            LinkedListToBST.Test();
+            //LinkedListToBST.Test();
+
+            //ArrayOfDigits.Test();
+
+            //Palindrome2.Test();
+
+            BigInt3.Test();
         }
     }
 }

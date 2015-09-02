@@ -49,10 +49,12 @@
     <Compile Include="AllPermutations.cs" />
     <Compile Include="AllSubsets.cs" />
     <Compile Include="All_Permutations.cs" />
+    <Compile Include="ArrayOfDigits.cs" />
     <Compile Include="BaseConversion.cs" />
     <Compile Include="BiggestSubarray.cs" />
     <Compile Include="BigInt.cs" />
     <Compile Include="BigInt2.cs" />
+    <Compile Include="BigInt3.cs" />
     <Compile Include="BinaryCode.cs" />
     <Compile Include="BinarySearch.cs" />
     <Compile Include="BinarySearch2.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="NumberToSentence.cs" />
     <Compile Include="OverlapLists.cs" />
     <Compile Include="Palindrome.cs" />
+    <Compile Include="Palindrome2.cs" />
     <Compile Include="Parallels.cs" />
     <Compile Include="Parentesis.cs" />
     <Compile Include="PossibleTriangles.cs" />
