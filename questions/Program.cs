@@ -151,7 +151,23 @@ namespace ProgrammingQuestions
 
             //BigInt3.Test();
 
-            MaxSumArray.Test();
+            //MaxSumArray.Test();
+
+            //DigitsDifference.Test();
+
+            //SumDigits.Test();
+
+            //MoveGrid.Test();
+
+            //PointGrid.Test();
+
+            //MinimumCoins.Test();
+
+            //DistincElementsWindow.Test();
+
+            //LongestPath.Test();
+
+            SameContact.Test();
         }
     }
 }
