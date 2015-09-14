@@ -153,6 +153,22 @@ namespace ProgrammingQuestions
 
             //MaxSumArray.Test();
 
+            //DigitsDifference.Test();
+
+            //SumDigits.Test();
+
+            //MoveGrid.Test();
+
+            //PointGrid.Test();
+
+            //MinimumCoins.Test();
+
+            //DistincElementsWindow.Test();
+
+            //LongestPath.Test();
+
+            SameContact.Test();
+
             WordTransition.Test();
         }
     }
