@@ -151,7 +151,9 @@ namespace ProgrammingQuestions
 
             //BigInt3.Test();
 
-            MaxSumArray.Test();
+            //MaxSumArray.Test();
+
+            WordTransition.Test();
         }
     }
 }

@@ -73,6 +73,7 @@
     <Compile Include="GameScores.cs" />
     <Compile Include="Graph.cs" />
     <Compile Include="GraphCost.cs" />
+    <Compile Include="Graphs\WordTransition.cs" />
     <Compile Include="Kadane.cs" />
     <Compile Include="LargestSumArray.cs" />
     <Compile Include="LinkedListAgain.cs" />
