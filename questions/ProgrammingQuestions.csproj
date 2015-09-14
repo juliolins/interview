@@ -75,7 +75,7 @@
     <Compile Include="GameScores.cs" />
     <Compile Include="Graph.cs" />
     <Compile Include="GraphCost.cs" />
-    <Compile Include="Graph\SameContact.cs" />
+    <Compile Include="Graphs\SameContact.cs" />
     <Compile Include="Graphs\WordTransition.cs" />
     <Compile Include="Kadane.cs" />
     <Compile Include="LargestSumArray.cs" />
