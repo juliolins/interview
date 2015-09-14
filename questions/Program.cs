@@ -167,9 +167,11 @@ namespace ProgrammingQuestions
 
             //LongestPath.Test();
 
-            SameContact.Test();
+            //SameContact.Test();
 
-            WordTransition.Test();
+            //WordTransition.Test();
+
+            TrainCost.Test();
         }
     }
 }
