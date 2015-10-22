@@ -135,6 +135,7 @@
     <Compile Include="Trie.cs" />
     <Compile Include="TrieAgain.cs" />
     <Compile Include="UnionFind.cs" />
+    <Compile Include="UnionFind\SocialNetwork.cs" />
     <Compile Include="WordsFromNumbers.cs" />
   </ItemGroup>
   <ItemGroup>

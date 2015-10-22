@@ -171,7 +171,9 @@ namespace ProgrammingQuestions
 
             //WordTransition.Test();
 
-            TrainCost.Test();
+            //TrainCost.Test();
+
+            SocialNetworkTest.Test();
         }
     }
 }
