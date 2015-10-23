@@ -61,6 +61,7 @@
     <Compile Include="BinaryTree.cs" />
     <Compile Include="BinaryTreeToSortedList.cs" />
     <Compile Include="BinaryTreeToSortedList2.cs" />
+    <Compile Include="BitArray.cs" />
     <Compile Include="BST.cs" />
     <Compile Include="BST2.cs" />
     <Compile Include="CheckArraySum.cs" />
@@ -80,6 +81,9 @@
     <Compile Include="Graphs\SameContact.cs" />
     <Compile Include="Graphs\TrainCost.cs" />
     <Compile Include="Graphs\WordTransition.cs" />
+    <Compile Include="HackerRank\Strings\AlternatingCharacters.cs" />
+    <Compile Include="HackerRank\Strings\DiagonalDifference.cs" />
+    <Compile Include="HackerRank\Strings\FunnyString.cs" />
     <Compile Include="Kadane.cs" />
     <Compile Include="LargestSumArray.cs" />
     <Compile Include="LinkedListAgain.cs" />
