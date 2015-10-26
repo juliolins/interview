@@ -122,7 +122,9 @@
     <Compile Include="Shuffle.cs" />
     <Compile Include="ShuffleNumbers.cs" />
     <Compile Include="SortingAgaincs.cs" />
+    <Compile Include="Sorting\Sortings.cs" />
     <Compile Include="StackQueue.cs" />
+    <Compile Include="StacksQueue\ExpressionParser.cs" />
     <Compile Include="StreamReader.cs" />
     <Compile Include="StringPermutation.cs" />
     <Compile Include="StringPermutations2.cs" />

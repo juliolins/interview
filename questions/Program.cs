@@ -179,7 +179,11 @@ namespace ProgrammingQuestions
 
             //BitArrayTest.Test();
 
-            ProgrammingQuestions.HackerRank.Strings.AlternatingCharacters.Test();
+            //ProgrammingQuestions.HackerRank.Strings.AlternatingCharacters.Test();
+
+            //ProgrammingQuestions.StacksQueue.ExpressionParser.Test();
+
+            ProgrammingQuestions.Sorting.Sortings.Test();
         }
     }
 }
