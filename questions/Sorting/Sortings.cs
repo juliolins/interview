@@ -15,10 +15,48 @@ namespace ProgrammingQuestions.Sorting
         {
             int[] a = new int[] { 3, 2, 5, 1, 9, 4, 8, 6, 7};
             a.PrintToConsole();
-            InsertionSort(a);
+            MergeSort(a);
             a.PrintToConsole();
             a.AssertSorted();
         }
+
+        public static void MergeSort(int[] array)
+        {
+            DoMergeSort(array, 0, array.Length - 1, new int[array.Length]);
+        }
+
+        private static void DoMergeSort(int[] array, int start, int end, int[] aux) 
+        {
+            if (start == end)
+            {
+                return;
+            }
+
+            int middle = (start + end) / 2;
+            DoMergeSort(array, start, middle, aux);
+            DoMergeSort(array, middle + 1, end, aux);
+            Merge(array, start, middle, end, aux);
+        }
+
+        public static void Merge(int[] array, int start, int middle, int end, int[] aux)
+        {
+            for (int p = start; p <= end; p++)
+            {
+                aux[p] = array[p];
+            }
+
+            int i = start;
+            int j = middle + 1;
+
+            for (int k = start; k <= end; k++)
+            {
+                if (i > middle) array[k] = aux[j++];
+                else if (j > end) array[k] = aux[i++];
+                else if (array[i] > array[j]) array[k] = array[j++];
+                else array[k] = array[i++];
+            }
+        }
+
 
         public static void InsertionSort(int[] array)
         {
