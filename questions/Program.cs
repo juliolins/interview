@@ -173,7 +173,17 @@ namespace ProgrammingQuestions
 
             //TrainCost.Test();
 
-            SocialNetworkTest.Test();
+            //SocialNetworkTest.Test();
+
+            //HackerRank.FunnyString.Test();
+
+            //BitArrayTest.Test();
+
+            //ProgrammingQuestions.HackerRank.Strings.AlternatingCharacters.Test();
+
+            //ProgrammingQuestions.StacksQueue.ExpressionParser.Test();
+
+            ProgrammingQuestions.Sorting.Sortings.Test();
         }
     }
 }
