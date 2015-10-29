@@ -124,6 +124,7 @@
     <Compile Include="Shuffle.cs" />
     <Compile Include="ShuffleNumbers.cs" />
     <Compile Include="SortingAgaincs.cs" />
+    <Compile Include="Sorting\PriorityQueue.cs" />
     <Compile Include="Sorting\Sortings.cs" />
     <Compile Include="StackQueue.cs" />
     <Compile Include="StacksQueue\ExpressionParser.cs" />

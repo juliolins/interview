@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProgrammingQuestions.Sorting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -183,7 +184,9 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.StacksQueue.ExpressionParser.Test();
 
-            ProgrammingQuestions.Sorting.Sortings.Test();
+            //ProgrammingQuestions.Sorting.Sortings.Test();
+
+            PriorityQueueMaxTest.Test();
         }
     }
 }
