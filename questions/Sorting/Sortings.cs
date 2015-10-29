@@ -13,17 +13,121 @@ namespace ProgrammingQuestions.Sorting
     {
         public static void Test()
         {
-            int[] a = new int[] { 3, 2, 5, 1, 9, 4, 8, 6, 7};
+            int[] a = new int[] { 3, 2, 5, 1, 9, 4, 8, 6, 7 };
             a.PrintToConsole();
-            MergeSort(a);
+            FindLargestElements(a, 3).PrintToConsole();
+            QuickSort(a);
             a.PrintToConsole();
             a.AssertSorted();
 
-            Console.WriteLine("Number of inversions: " + numberOfInversions);
+            //Console.WriteLine("Number of inversions: " + numberOfInversions);
+
+            Console.WriteLine("Index of 3 = " + BinarySearchIteractive(a, -1));
+        }
+
+        public static int BinarySearchIteractive(int[] array, int value)
+        {
+            int start = 0;
+            int end = array.Length - 1;
+
+            while (start <= end)
+            {
+                int middle = (start + end) / 2;
+                if (array[middle] > value) end = middle - 1;
+                else if (array[middle] < value) start = middle + 1;
+                else return middle;
+            }
+
+            return -1;
+        }
+
+        //returns the index of value
+        private static int BinarySearch(int[] array, int value)
+        {
+            return DoBinarySearch(array, value, 0, array.Length - 1);
+        }
+
+        private static int DoBinarySearch(int[] array, int value, int start, int end)
+        {
+            if (start > end)
+            {
+                return -1;
+            }
+
+            int middle = (start + end) / 2;
+
+            if (array[middle] > value)
+            {
+                return DoBinarySearch(array, value, start, middle - 1);
+            }
+            else if (array[middle] < value)
+            {
+                return DoBinarySearch(array, value, middle + 1, end);
+            }
+            else
+            {
+                return middle;
+            }
+        }
+
+        public static IEnumerable<int> FindLargestElements(int[] array, int k)
+        {
+            int index = array.Length - k;
+
+            int low = 0;
+            int high = array.Length - 1;
+            int partition = -1;
+
+            while (true)
+            {
+                partition = Partition(array, low, high);
+                if (partition < index) low = partition + 1;
+                else if (partition > index) high = partition - 1;
+                else break;
+            }
+
+            return array.Skip(array.Length - k);
+        }
+
+        public static void QuickSort(int[] array)
+        {
+            QuickSort(array, 0, array.Length - 1);
+        }
+
+        public static void QuickSort(int[] array, int start, int end)
+        {
+            if (end <= start)
+            {
+                return;
+            }
+
+            int partition = Partition(array, start, end);
+            QuickSort(array, start, partition - 1);
+            QuickSort(array, partition + 1, end);
+        }
+
+
+        public static int Partition(int[] array, int start, int end)
+        {
+            int i = start;
+            int j = end + 1;
+
+            while (i < j)
+            {
+                while (++i < end && array[i] <= array[start]);
+
+                while (--j > start && array[j] >= array[start]);
+
+                if (i > j) break;
+                array.Swap(i, j);
+            }
+
+            array.Swap(start, j);
+
+            return j;
         }
 
         private static int numberOfInversions = 0;
-
         public static void BottonUpMergeSort(int[] array)
         {
             int[] aux = new int[array.Length];
