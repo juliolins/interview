@@ -186,7 +186,11 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.Sorting.Sortings.Test();
 
-            PriorityQueueMaxTest.Test();
+            //PriorityQueueMaxTest.Test();
+
+            //ProgrammingQuestions.SymbolTables.IntBSTTest.Test();
+
+            ProgrammingQuestions.SymbolTables.TestTree.Test();
         }
     }
 }

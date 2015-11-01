@@ -15,14 +15,58 @@ namespace ProgrammingQuestions.Sorting
         {
             int[] a = new int[] { 3, 2, 5, 1, 9, 4, 8, 6, 7 };
             a.PrintToConsole();
-            FindLargestElements(a, 3).PrintToConsole();
-            QuickSort(a);
+            //FindLargestElements(a, 3).PrintToConsole();
+            HeapSort(a);
             a.PrintToConsole();
             a.AssertSorted();
 
-            //Console.WriteLine("Number of inversions: " + numberOfInversions);
+            Console.WriteLine("Number of inversions: " + numberOfInversions);
 
-            Console.WriteLine("Index of 3 = " + BinarySearchIteractive(a, -1));
+            //Console.WriteLine("Index of 3 = " + BinarySearchIteractive(a, -1));
+        }
+
+        public static void HeapSort(int[] array)
+        {
+            //build a head in-place
+            for (int i = array.Length / 2; i > 0; i--)
+            {
+                Sink(array, i, array.Length);
+            }
+
+            int index = array.Length;
+            while (index > 1)
+            {
+                ExchanceHeap(array, 1, index--);
+                Sink(array, 1, index);
+            }
+        }
+
+        private static void Sink(int[] array, int k, int N)
+        {
+            while ((2 * k) + 1 <= N)
+            {
+                k *= 2;
+                if (IsLessHeap(array, k, k + 1)) k++;
+                
+                if (!IsLessHeap(array, k / 2, k))
+                {
+                    break;
+                }
+
+                ExchanceHeap(array, k / 2, k);
+            }
+        }
+
+        private static bool IsLessHeap(int[] array, int i, int j)
+        {
+            return array[i - 1] < array[j - 1];
+        }
+
+        private static void ExchanceHeap(int[] array, int i, int j)
+        {
+            int temp = array[i - 1];
+            array[i - 1] = array[j - 1];
+            array[j - 1] = temp;
         }
 
         public static int BinarySearchIteractive(int[] array, int value)

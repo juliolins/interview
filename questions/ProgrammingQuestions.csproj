@@ -133,6 +133,9 @@
     <Compile Include="StringPermutations2.cs" />
     <Compile Include="StringTransformation.cs" />
     <Compile Include="SumDigits.cs" />
+    <Compile Include="SymbolTables\BinarySearchTree.cs" />
+    <Compile Include="SymbolTables\HashMap.cs" />
+    <Compile Include="SymbolTables\IntBST.cs" />
     <Compile Include="TeamScore.cs" />
     <Compile Include="TextReassemble.cs" />
     <Compile Include="TopCoder\DecryptBinary.cs" />
