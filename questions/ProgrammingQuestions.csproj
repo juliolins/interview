@@ -131,6 +131,7 @@
     <Compile Include="StreamReader.cs" />
     <Compile Include="StringPermutation.cs" />
     <Compile Include="StringPermutations2.cs" />
+    <Compile Include="Strings\CrackingCodeInterviewStrings.cs" />
     <Compile Include="StringTransformation.cs" />
     <Compile Include="SumDigits.cs" />
     <Compile Include="SymbolTables\BinarySearchTree.cs" />
