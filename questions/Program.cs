@@ -192,7 +192,9 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.SymbolTables.TestTree.Test();
 
-            ProgrammingQuestions.Strings.CrackingCodeInterviewStrings.Test();
+            //ProgrammingQuestions.Strings.CrackingCodeInterviewStrings.Test();
+
+            ProgrammingQuestions.Arrays.CrackingArrays.TestRotate();
         }
     }
 }
