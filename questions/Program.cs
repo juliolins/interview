@@ -194,7 +194,9 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.Strings.CrackingCodeInterviewStrings.Test();
 
-            ProgrammingQuestions.Arrays.CrackingArrays.TestRotate();
+            //ProgrammingQuestions.Arrays.CrackingArrays.TestRotate();
+
+            ProgrammingQuestions.DataStructures.LinkedListTests.Test();
         }
     }
 }

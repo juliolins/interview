@@ -10,17 +10,30 @@ namespace ProgrammingQuestions.Arrays
     {
         public static void TestRotate()
         {
+            //int[][] matrix = new int[][] 
+            //{
+            //    new int[] {1, 2, 3},
+            //    new int[] {4, 5, 6},
+            //    new int[] {7, 8, 9}
+            //};
+
+            //Print(matrix);
+            //Console.WriteLine();
+            //Rotate(matrix);
+            //Print(matrix);
+
             int[][] matrix = new int[][] 
             {
                 new int[] {1, 2, 3},
-                new int[] {4, 5, 6},
+                new int[] {4, 0, 6},
                 new int[] {7, 8, 9}
             };
 
             Print(matrix);
             Console.WriteLine();
-            Rotate(matrix);
+            SetRowColumnToZero(matrix);
             Print(matrix);
+
         }
 
         private static void Print(int[][] matrix)
@@ -64,5 +77,48 @@ namespace ProgrammingQuestions.Arrays
                 end--;
             }
         }
+
+        public static void SetRowColumnToZero(int[][] matrix)
+        {
+            bool[] setZero_i = new bool[matrix.Length];
+            bool[] setZero_j = new bool[matrix[0].Length];
+
+            //scan matrix markings rows and columns as set to zero
+            for (int i = 0; i < matrix.Length; i++)
+            {
+                for (int j = 0; j < matrix[0].Length; j++)
+                {
+                    if (matrix[i][j] == 0)
+                    {
+                        setZero_i[i] = true;
+                        setZero_j[j] = true;
+                    }
+                }
+            }
+
+            for (int i = 0; i < matrix.Length; i++)
+            {
+                for (int j = 0; j < matrix[0].Length; j++)
+                {
+                    if (setZero_i[i] || setZero_j[j]) 
+                    {
+                        matrix[i][j] = 0;
+                    }
+                }
+            }
+        }
+
+
+        //return true if s1 is a rotation of s2 (page 48)
+        public static bool IsRotation(string s1, string s2) 
+        {
+            if (s1 == null || s2 == null) return false;
+            if (s1.Length != s2.Length) return false;
+
+            string s1s1 = s1 + s1;
+            return s1s1.Contains(s2);
+        }
+
+        
     }
 }
