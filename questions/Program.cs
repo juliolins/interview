@@ -190,13 +190,13 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.SymbolTables.IntBSTTest.Test();
 
-            //ProgrammingQuestions.SymbolTables.TestTree.Test();
+            ProgrammingQuestions.SymbolTables.TestTree.Test();
 
             //ProgrammingQuestions.Strings.CrackingCodeInterviewStrings.Test();
 
             //ProgrammingQuestions.Arrays.CrackingArrays.TestRotate();
 
-            ProgrammingQuestions.DataStructures.LinkedListTests.Test();
+            //ProgrammingQuestions.DataStructures.LinkedListTests.Test();
         }
     }
 }

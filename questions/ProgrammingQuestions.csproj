@@ -51,6 +51,7 @@
     <Compile Include="All_Permutations.cs" />
     <Compile Include="ArrayOfDigits.cs" />
     <Compile Include="Arrays\CrackingArrays.cs" />
+    <Compile Include="Assert.cs" />
     <Compile Include="BaseConversion.cs" />
     <Compile Include="BiggestSubarray.cs" />
     <Compile Include="BigInt.cs" />

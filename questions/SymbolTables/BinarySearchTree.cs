@@ -13,12 +13,26 @@ namespace ProgrammingQuestions.SymbolTables
             var bst = new BinarySearchTree<int, int>();
 
             bst[1] = 10;
+            Console.WriteLine("IsBalenced = " + bst.IsBalanced());
+            Console.WriteLine("IsBalencedRec = " + bst.IsBalancedRec());
             bst[2] = 20;
+            Console.WriteLine("IsBalenced = " + bst.IsBalanced());
+            Console.WriteLine("IsBalencedRec = " + bst.IsBalancedRec());
             bst[3] = 30;
+            Console.WriteLine("IsBalenced = " + bst.IsBalanced());
+            Console.WriteLine("IsBalencedRec = " + bst.IsBalancedRec());
             bst[5] = 50;
+            Console.WriteLine("IsBalenced = " + bst.IsBalanced());
+            Console.WriteLine("IsBalencedRec = " + bst.IsBalancedRec());
             bst[6] = 60;
+            Console.WriteLine("IsBalenced = " + bst.IsBalanced());
+            Console.WriteLine("IsBalencedRec = " + bst.IsBalancedRec());
             bst[8] = 80;
+            Console.WriteLine("IsBalenced = " + bst.IsBalanced());
+            Console.WriteLine("IsBalencedRec = " + bst.IsBalancedRec());
             bst[9] = 90;
+            Console.WriteLine("IsBalenced = " + bst.IsBalanced());
+            Console.WriteLine("IsBalencedRec = " + bst.IsBalancedRec());
 
             Console.WriteLine("Max = " + bst.Max());
             Console.WriteLine("Min = " + bst.Min());
@@ -76,6 +90,80 @@ namespace ProgrammingQuestions.SymbolTables
 
             return CheckBalenced(node);
         }
+
+        public bool IsBalancedRec()
+        {
+            bool isBalanced = true;
+            IsBalancedRec(root, ref isBalanced);
+            return isBalanced;
+        }
+
+        private int IsBalancedRec(Node<TKey, TValue> node, ref bool isBalanced)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+
+            int heightLeft = IsBalancedRec(node.Left, ref isBalanced);
+            int heightRight = IsBalancedRec(node.Right, ref isBalanced);
+
+            if (Math.Abs(heightLeft - heightRight) > 1)
+            {
+                isBalanced = false;
+            }
+
+            return 1 + Math.Max(heightLeft, heightRight);
+        }
+
+        public bool IsBalanced()
+        {
+            var stack = new Stack<Node<TKey, TValue>>();
+            var current = root;
+            int maxHeight = 0;
+            int currentHeight = 0;
+
+            while (current != null || stack.Count > 0)
+            {
+                if (current != null)
+                {
+                    stack.Push(current);
+                    current = current.Left;
+                    currentHeight++;
+                }
+                else
+                {
+                    current = stack.Pop();
+                    currentHeight--;
+
+                    if (IsLeaf(current))
+                    {
+                        if (maxHeight == 0)
+                        {
+                            maxHeight = currentHeight;
+                        }
+                        else if (Math.Abs(maxHeight - currentHeight) > 1)
+                        {
+                            return false;
+                        }
+                        else
+                        {
+                            maxHeight = Math.Max(maxHeight, currentHeight);
+                        }
+                    }
+
+                    current = current.Right;
+                }
+            }
+
+            return true;
+        }
+
+        private bool IsLeaf(Node<TKey, TValue> node)
+        {
+            return (node != null && node.Left == null && node.Right == null);
+        }
+
 
         private int Size(Node<TKey, TValue> node) 
         {
