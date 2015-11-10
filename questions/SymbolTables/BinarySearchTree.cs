@@ -34,6 +34,13 @@ namespace ProgrammingQuestions.SymbolTables
             Console.WriteLine("IsBalenced = " + bst.IsBalanced());
             Console.WriteLine("IsBalencedRec = " + bst.IsBalancedRec());
 
+            Console.WriteLine("Values per level:");
+            var levels = bst.ValuesPerLevel();
+            foreach (var level in levels)
+            {
+                level.PrintToConsole();
+            }
+
             Console.WriteLine("Max = " + bst.Max());
             Console.WriteLine("Min = " + bst.Min());
             Console.WriteLine("Floor(7) = " + bst.Floor(7));
@@ -382,6 +389,72 @@ namespace ProgrammingQuestions.SymbolTables
 
             return count;
         }
+
+        public IEnumerable<IEnumerable<TValue>> ValuesPerLevel()
+        {
+            var results = new List<List<TValue>>();
+            if (root == null) return results;
+
+
+            var queue = new Queue<Node<TKey, TValue>>();
+            Node<TKey, TValue> first = null;
+            queue.Enqueue(root);
+
+            var list = new List<TValue>();
+
+            while (queue.Count > 0)
+            {
+                var current = queue.Dequeue();
+
+                //found the first of the next level, finish previous list
+                if (current == first)
+                {
+                    results.Add(list);
+                    list = new List<TValue>();
+                    first = null;
+                }
+
+                list.Add(current.Value);
+
+                if (current.Left != null)
+                {
+                    queue.Enqueue(current.Left);
+                    first = first != null ? first : current.Left;
+                }
+
+                if (current.Right != null)
+                {
+                    queue.Enqueue(current.Right);
+                    first = first != null ? first : current.Right;
+                }
+            }
+
+            results.Add(list);
+
+
+            return results;
+        }
+
+        public TKey FirstCommonAncestor(TKey keyA, TKey keyB)
+        {
+            return FirstCommonAncestor(keyA, keyB, root).Key;
+        }
+
+        private Node<TKey, TValue> FirstCommonAncestor(TKey keyA, TKey keyB, Node<TKey, TValue> node)
+        {
+            if (node == null) return null;
+
+            if (node.Key.CompareTo(keyA) == 0 || node.Key.CompareTo(keyB) == 0)
+            {
+                return node;
+            }
+
+            var left = FirstCommonAncestor(keyA, keyB, node.Left);
+            var right = FirstCommonAncestor(keyA, keyB, node.Left);
+
+            throw new NotImplementedException();
+        }
+
 
         public IEnumerable<TValue> Values()
         {

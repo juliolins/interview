@@ -64,11 +64,20 @@ namespace ProgrammingQuestions.SymbolTables
             return node;
         }
 
+        public void SetNextByLevel()
+        {
+
+
+
+        }
+
+
         private class Node
         {
             public int Value { get; set; }
             public Node Left { get; set; }
             public Node Right { get; set; }
+            public Node Next { get; set; }
         }
     }
 }
