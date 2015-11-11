@@ -188,9 +188,9 @@ namespace ProgrammingQuestions
 
             //PriorityQueueMaxTest.Test();
 
-            //ProgrammingQuestions.SymbolTables.IntBSTTest.Test();
+            ProgrammingQuestions.SymbolTables.IntBSTTest.Test();
 
-            ProgrammingQuestions.SymbolTables.TestTree.Test();
+            //ProgrammingQuestions.SymbolTables.TestTree.Test();
 
             //ProgrammingQuestions.Strings.CrackingCodeInterviewStrings.Test();
 

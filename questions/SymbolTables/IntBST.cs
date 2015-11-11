@@ -10,7 +10,14 @@ namespace ProgrammingQuestions.SymbolTables
     {
         public static void Test()
         {
-            var bst = new IntBST(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9});
+            //var bst = new IntBST(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9});
+
+            var bst = new IntBST();
+            var paths = bst.PathsWithSum(16);
+            foreach (var path in paths)
+            {
+                path.PrintToConsole();
+            }
         }
     }
 
@@ -21,7 +28,14 @@ namespace ProgrammingQuestions.SymbolTables
 
         public IntBST()
         {
+            root = new Node() { Value = 5 };
+            root.Left = new Node() { Value = 8};
+            root.Left.Left = new Node() { Value = 3 };
+            root.Left.Left.Left = new Node() { Value = 2 };
 
+            root.Left.Right = new Node() { Value = 1 };
+            root.Left.Right.Left = new Node() { Value = 4 };
+            root.Left.Right.Right = new Node() { Value = 7 };
         }
 
         public IntBST(int[] array)
@@ -64,22 +78,57 @@ namespace ProgrammingQuestions.SymbolTables
             return node;
         }
 
-        //public IEnumerable<IEnumerable<int>> PathsWithSum(int sum)
-        //{
-        //    int currentSum = 0;
-        //    var path = new List<int>();
-        //    var stack = new Stack<Node>();
-        //    var current = root;
+        public IEnumerable<IEnumerable<int>> PathsWithSum(int sum)
+        {
+            var result = new List<List<int>>();
+            CheckPathSum(root, sum, 0, new List<Node>(), result);
+            return result;
+        }
 
-        //    while (current != null || stack.Count > 0)
-        //    {
-        //        if (current != null)
-        //        {
-        //            currentSum += 
-        //        }
-        //    }
+        private void CheckPathSum(Node node, int targetSum, int currentSum, List<Node> currentList, List<List<int>> sumPaths)
+        {
+            if (node == null) return;
 
-        //}
+            var removedNodes = new List<Node>();
+
+            //calculate new sum and add current node to path
+            int newSum = currentSum + node.Value;
+            currentList.Add(node);
+
+            if (newSum > targetSum)
+            {
+                //remove nodes while newSum is bigger (except current node)
+                while (newSum > targetSum && currentList.Count >= 1)
+                {
+                    //remove from the head
+                    var removedNode = currentList[0];
+                    newSum -= removedNode.Value;
+                    currentList.RemoveAt(0);
+                    //insert at head
+                    removedNodes.Insert(0, removedNode);
+                }
+            }
+
+
+            //check if now the newSum is equal (either initially or by removing nodes)
+            if (newSum == targetSum)
+            {
+                sumPaths.Add(new List<int>(currentList.Select(n => n.Value)));
+            }
+
+            //keep going down the tree
+            CheckPathSum(node.Left, targetSum, newSum, currentList, sumPaths);
+            CheckPathSum(node.Right, targetSum, newSum, currentList, sumPaths);
+
+            //when returning, add back removed nodes
+            foreach (var removedNode in removedNodes)
+            {
+                currentList.Insert(0, removedNode);
+            }
+
+            //now remove current node
+            currentList.RemoveAt(currentList.Count - 1);
+        }
 
         private class Node
         {
@@ -87,6 +136,11 @@ namespace ProgrammingQuestions.SymbolTables
             public Node Left { get; set; }
             public Node Right { get; set; }
             public Node Next { get; set; }
+
+            public override string ToString()
+            {
+                return Value.ToString();
+            }
         }
     }
 }
