@@ -64,13 +64,22 @@ namespace ProgrammingQuestions.SymbolTables
             return node;
         }
 
-        public void SetNextByLevel()
-        {
+        //public IEnumerable<IEnumerable<int>> PathsWithSum(int sum)
+        //{
+        //    int currentSum = 0;
+        //    var path = new List<int>();
+        //    var stack = new Stack<Node>();
+        //    var current = root;
 
+        //    while (current != null || stack.Count > 0)
+        //    {
+        //        if (current != null)
+        //        {
+        //            currentSum += 
+        //        }
+        //    }
 
-
-        }
-
+        //}
 
         private class Node
         {

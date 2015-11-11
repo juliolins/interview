@@ -41,6 +41,10 @@ namespace ProgrammingQuestions.SymbolTables
                 level.PrintToConsole();
             }
 
+            Console.WriteLine("Common: " + bst.FirstCommonAncestor(3, 9));
+
+            Console.WriteLine("IsSubtree: " + bst.IsSubTree(5, 2));
+
             Console.WriteLine("Max = " + bst.Max());
             Console.WriteLine("Min = " + bst.Min());
             Console.WriteLine("Floor(7) = " + bst.Floor(7));
@@ -444,17 +448,118 @@ namespace ProgrammingQuestions.SymbolTables
         {
             if (node == null) return null;
 
-            if (node.Key.CompareTo(keyA) == 0 || node.Key.CompareTo(keyB) == 0)
+            if (node.MatchesKey(keyA) || node.MatchesKey(keyB))
             {
                 return node;
             }
 
             var left = FirstCommonAncestor(keyA, keyB, node.Left);
-            var right = FirstCommonAncestor(keyA, keyB, node.Left);
+            var right = FirstCommonAncestor(keyA, keyB, node.Right);
 
-            throw new NotImplementedException();
+            if (left == null)
+            {
+                return right;
+            }
+            else if (right == null)
+            {
+                return left;
+            }
+            else if ((left.MatchesKey(keyA) && right.MatchesKey(keyB)) || (left.MatchesKey(keyB) && right.MatchesKey(keyA)))
+            {
+                return node;
+            }
+            else if (left.MatchesKey(keyA) || left.MatchesKey(keyB))
+            {
+                return left;
+            }
+            else if (right.MatchesKey(keyA) || right.MatchesKey(keyB))
+            {
+                return right;
+            }
+            else
+            {
+                return null;
+            }
         }
 
+        public bool IsSubTree(TKey largeKey, TKey smallKey)
+        {
+            var largeRoot = FindNode(largeKey);
+            var smallRoot = FindNode(smallKey);
+
+            //find smallRoot in largeRoot
+            //in-order with stack
+            var stack = new Stack<Node<TKey, TValue>>();
+            var current = largeRoot;
+
+            while (current != null || stack.Count > 0)
+            {
+                if (current != null)
+                {
+                    stack.Push(current);
+                    current = current.Left;
+                }
+                else
+                {
+                    current = stack.Pop();
+                    if (current.MatchesNode(smallRoot))
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        current = current.Right;
+                    }
+                }
+            }
+
+            //current is set
+            return IsSubTree(current, smallRoot);
+        }
+
+        private Node<TKey, TValue> FindNode(TKey key)
+        {
+            var current = root;
+            while (current != null)
+            {
+                int comparison = current.Key.CompareTo(key);
+                if (comparison > 0)
+                {
+                    current = current.Left;
+                }
+                else if (comparison < 0)
+                {
+                    current = current.Right;
+                }
+                else
+                {
+                    return current;
+                }
+            }
+
+            return null;
+        }
+
+        private bool IsSubTree(Node<TKey, TValue> largeRoot, Node<TKey, TValue> smallRoot)
+        {
+            if (largeRoot == null && smallRoot == null)
+            {
+                return true;
+            }
+            else if ((largeRoot == null && smallRoot != null) || (largeRoot != null && smallRoot == null))
+            {
+                return false;
+            }
+            //neither are null
+            else if (largeRoot.MatchesNode(smallRoot))
+            {
+                return IsSubTree(largeRoot.Left, smallRoot.Left) && IsSubTree(largeRoot.Right, smallRoot.Right);
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public IEnumerable<TValue> Values()
         {
@@ -716,16 +821,33 @@ namespace ProgrammingQuestions.SymbolTables
             return node;
         }
 
-        internal enum Color { Red, Black };
 
-        private class Node<TKey, TValue>
+
+    }
+    internal enum Color { Red, Black };
+
+    internal class Node<TKey, TValue> where TKey : IComparable
+    {
+        public TKey Key { get; set; }
+        public TValue Value { get; set; }
+        public Color Color { get; set; }
+        public int Size { get; set; }
+        public Node<TKey, TValue> Left { get; set; }
+        public Node<TKey, TValue> Right { get; set; }
+    }
+
+
+    internal static class NodeExtensions
+    {
+        public static bool MatchesNode<T, U>(this Node<T, U> thisNode, Node<T, U> thatNode) where T : IComparable
         {
-            public TKey Key { get; set; }
-            public TValue Value { get; set; }
-            public Color Color { get; set; }
-            public int Size { get; set; }
-            public Node<TKey, TValue> Left { get; set; }
-            public Node<TKey, TValue> Right { get; set; }
+            //if (thisNode == null && thatNode == null) return true;
+            //if (thisNode == null || thatNode == null) return false;
+            return thisNode.Key.CompareTo(thatNode.Key) == 0;
+        }
+        public static bool MatchesKey<T, U>(this Node<T, U> thisNode, T key) where T : IComparable
+        {
+            return thisNode.Key.CompareTo(key) == 0;
         }
     }
 }
