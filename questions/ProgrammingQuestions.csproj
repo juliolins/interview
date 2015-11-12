@@ -64,6 +64,7 @@
     <Compile Include="BinaryTreeToSortedList.cs" />
     <Compile Include="BinaryTreeToSortedList2.cs" />
     <Compile Include="BitArray.cs" />
+    <Compile Include="BitManipulation\CrackingBits.cs" />
     <Compile Include="BST.cs" />
     <Compile Include="BST2.cs" />
     <Compile Include="CheckArraySum.cs" />
