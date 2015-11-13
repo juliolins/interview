@@ -201,7 +201,9 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.Graphs.TestCrackingGraph.Test();
 
-            ProgrammingQuestions.BitManipulation.TestBits.Test();
+            //ProgrammingQuestions.BitManipulation.TestBits.Test();
+
+            ProgrammingQuestions.Recursion.RecursionTest.Test();
         }
     }
 }

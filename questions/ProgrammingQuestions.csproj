@@ -123,6 +123,7 @@
     <Compile Include="QuickSort.cs" />
     <Compile Include="ReadWriteSimulation.cs" />
     <Compile Include="Rectangle.cs" />
+    <Compile Include="Recursion\CrackingRecursion.cs" />
     <Compile Include="Regex.cs" />
     <Compile Include="RestoreSentenceWithoutSpaces.cs" />
     <Compile Include="ReverseString.cs" />
