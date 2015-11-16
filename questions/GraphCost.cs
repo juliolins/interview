@@ -133,8 +133,9 @@ namespace ProgrammingQuestions
 
     public static class PrintExtension
     {
-        public static void PrintToConsole<T>(this IEnumerable<T> enumerable)
+        public static void PrintToConsole<T>(this IEnumerable<T> enumerable, bool withCount = false)
         {
+            if (withCount) Console.Write(string.Format("[{0}] ", enumerable.Count()));
             Console.WriteLine(Print(enumerable));
         }
 

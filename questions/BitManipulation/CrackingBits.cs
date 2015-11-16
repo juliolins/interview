@@ -37,7 +37,7 @@ namespace ProgrammingQuestions.BitManipulation
         {
             //clean m
             int allOnes = ~0;
-            allOnes >>= (j - i + 1);
+            allOnes = allOnes >> (j - i + 1);
             m = m & allOnes;
 
             //prepare m for join

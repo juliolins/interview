@@ -12,19 +12,25 @@ namespace ProgrammingQuestions.Recursion
         public static void Test()
         {
 
-            Console.WriteLine(CrackingRecursion.Fib(12));
-            Console.WriteLine(CrackingRecursion.FibIteractive(12));
+            //Console.WriteLine(CrackingRecursion.Fib(12));
+            //Console.WriteLine(CrackingRecursion.FibIteractive(12));
 
-            Console.WriteLine(CrackingRecursion.HowManyPaths(10, 10) + "");
+            //Console.WriteLine(CrackingRecursion.HowManyPaths(10, 10) + "");
 
-            Console.WriteLine(Int64.MaxValue + "");
+            //Console.WriteLine(Int64.MaxValue + "");
 
-            Console.WriteLine("All sets:");
-            var allSets = CrackingRecursion.AllSets(new int[] { 1, 2, 3, 4});
-            foreach (var set in allSets)
-            {
-                set.PrintToConsole();
-            }
+            //Console.WriteLine("All sets:");
+            //var allSets = CrackingRecursion.AllSets(new int[] { 1, 2, 3, 4});
+            //foreach (var set in allSets)
+            //{
+            //    set.PrintToConsole();
+            //}
+
+            //var allPermutations = CrackingRecursion.AllPermutations("abc");
+            //allPermutations.PrintToConsole(true);
+
+            var allParentesis = CrackingRecursion.AllParentesis(4);
+            allParentesis.PrintToConsole(true);
         }
     }
 
@@ -98,6 +104,73 @@ namespace ProgrammingQuestions.Recursion
                 stack.Push(array[i]);
                 BuildSet(array, i + 1, elements - 1, stack, allSets);
                 stack.Pop();
+            }
+        }
+
+        public static IEnumerable<string> AllPermutations(string word)
+        {
+            var permutations = new List<string>();
+            Permute(word.ToCharArray(), 0, permutations);
+            return permutations;
+        }
+
+        private static void Permute(char[] word, int startIndex, List<string> permutations)
+        {
+            if (startIndex == word.Length - 1)
+            {
+                permutations.Add(new string(word));
+                return;
+            }
+
+            for (int i = startIndex; i < word.Length; i++)
+            {
+                word.Swap(startIndex, i);
+                Permute(word, startIndex + 1, permutations);
+                word.Swap(startIndex, i);
+            }
+        }
+
+        public static IEnumerable<string> AllParentesis(int pairQuantity)
+        {
+            var allParentesis = new List<string>();
+            Parentesis(new char[pairQuantity * 2], 0, pairQuantity, pairQuantity, allParentesis);
+            return allParentesis;
+        }
+
+        public static void Parentesis(char[] array, int index, int left, int right, List<string> allParentesis)
+        {
+            if (left == 0 && right == 0)
+            {
+                allParentesis.Add(new string(array));
+                return;
+            }
+
+            if (left > 0)
+            {
+                array[index] = '(';
+                Parentesis(array, index + 1, left - 1, right, allParentesis);
+            }
+
+            if (right > 0 && right > left)
+            {
+                array[index] = ')';
+                Parentesis(array, index + 1, left, right - 1, allParentesis);
+            }
+        }
+
+        public static void Navigate(int[][] matrix, int i, int j, Func<int[][], int, int, bool> shoudlVisit, Action<int[][], int, int> visit)
+        {
+            if (i < 0 || i >= matrix.Length) return;
+            if (j < 0 || j >= matrix[i].Length) return;
+
+            if (shoudlVisit(matrix, i, j))
+            {
+                visit(matrix, i, j);
+
+                Navigate(matrix, i - 1, j, shoudlVisit, visit);
+                Navigate(matrix, i + 1, j, shoudlVisit, visit);
+                Navigate(matrix, i, j - 1, shoudlVisit, visit);
+                Navigate(matrix, i, j + 1, shoudlVisit, visit);
             }
         }
     }
