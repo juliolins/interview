@@ -29,14 +29,84 @@ namespace ProgrammingQuestions.Recursion
             //var allPermutations = CrackingRecursion.AllPermutations("abc");
             //allPermutations.PrintToConsole(true);
 
-            var allParentesis = CrackingRecursion.AllParentesis(4);
-            allParentesis.PrintToConsole(true);
+            //var allParentesis = CrackingRecursion.AllParentesis(4);
+            //allParentesis.PrintToConsole(true);
+
+            //int[][] matrix = new int[][] 
+            //{
+            //    new int[] {1, 0, 0, 1},
+            //    new int[] {1, 1, 0, 0},
+            //    new int[] {0, 1, 1, 1},
+            //    new int[] {1, 1, 0, 1}
+            //};
+
+            //int color = 1;
+            //CrackingRecursion.Navigate(matrix, 0, 0, (theMatrix, i, j) => theMatrix[i][j] == color, (theMatrix, i, j) => theMatrix[i][j] *= -1);
+
+            //foreach (var line in matrix)
+            //{
+            //    line.PrintToConsole();
+            //}
+
+            Console.WriteLine("Count = " + CrackingRecursion.NumberOfWaysCoins(100));
+            Console.WriteLine("Cost: " + CrackingRecursion.cost);
         }
     }
 
 
     public class CrackingRecursion
     {
+        public static int cost = 0;
+
+        public static int NumberOfWaysCoins(int amount)
+        {
+            int[][] cache = new int[amount + 1][];
+            for (int i = 0; i < cache.Length; i++)
+			{
+			    cache[i] = new int[6];
+			}
+
+            return NumberOfWaysCoins(amount, 25, cache);
+        }
+
+        public static int NumberOfWaysCoins(int amount, int maxCoin, int[][] cache)
+        {
+            cost++;
+
+            if (cache[amount][maxCoin / 5] > 0)
+            {
+                return cache[amount][maxCoin / 5];
+            }
+
+            if (amount == 0)
+            {
+                return 1;
+            }
+
+            int count = 0;
+
+            if (amount >= 25 && maxCoin >= 25)
+            {
+                count += NumberOfWaysCoins(amount - 25, 25, cache);
+            }
+
+            if (amount >= 10 && maxCoin >= 10)
+            {
+                count += NumberOfWaysCoins(amount - 10, 10, cache);
+            }
+            if (amount >= 5 && maxCoin >= 5)
+            {
+                count += NumberOfWaysCoins(amount - 5, 5, cache);
+            }
+            if (amount >= 1 && maxCoin >= 1)
+            {
+                count += NumberOfWaysCoins(amount - 1, 1, cache);
+            }
+
+            cache[amount][maxCoin / 5] = count;
+
+            return count;
+        }
 
 
         public static int Fib(int x)
