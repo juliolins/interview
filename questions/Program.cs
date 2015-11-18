@@ -203,7 +203,9 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.BitManipulation.TestBits.Test();
 
-            ProgrammingQuestions.Recursion.RecursionTest.Test();
+            //ProgrammingQuestions.Recursion.RecursionTest.Test();
+
+            CrackingSortingTest.Test();
         }
     }
 }
