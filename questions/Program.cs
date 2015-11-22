@@ -205,7 +205,11 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.Recursion.RecursionTest.Test();
 
-            CrackingSortingTest.Test();
+            //CrackingSortingTest.Test();
+
+            //ProgrammingQuestions.CrackingTough.SortByType_Jorge_Test.Test();
+
+            ProgrammingQuestions.SymbolTables.Trie26Test.Test();
         }
     }
 }

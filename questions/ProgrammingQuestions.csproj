@@ -71,6 +71,8 @@
     <Compile Include="CircularShift.cs" />
     <Compile Include="Combination.cs" />
     <Compile Include="CountWaysStep.cs" />
+    <Compile Include="CrackingTough\SortByType_Jorge.cs" />
+    <Compile Include="CrackingTough\TicTacToe.cs" />
     <Compile Include="DataStructures\LinkedList.cs" />
     <Compile Include="DataStructures\QueueTwoStacks.cs" />
     <Compile Include="DataStructures\Stack.cs" />
@@ -144,6 +146,8 @@
     <Compile Include="SymbolTables\BinarySearchTree.cs" />
     <Compile Include="SymbolTables\HashMap.cs" />
     <Compile Include="SymbolTables\IntBST.cs" />
+    <Compile Include="SymbolTables\TernarySearchTrie.cs" />
+    <Compile Include="SymbolTables\Trie26.cs" />
     <Compile Include="TeamScore.cs" />
     <Compile Include="TextReassemble.cs" />
     <Compile Include="TopCoder\DecryptBinary.cs" />
