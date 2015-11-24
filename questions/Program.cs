@@ -209,7 +209,11 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.CrackingTough.SortByType_Jorge_Test.Test();
 
-            ProgrammingQuestions.SymbolTables.Trie26Test.Test();
+            //ProgrammingQuestions.SymbolTables.Trie26Test.Test();
+
+            //ProgrammingQuestions.Facebook.BirdTree.Test();
+
+            ProgrammingQuestions.Facebook.GeeksForGeeks.Test();
         }
     }
 }
