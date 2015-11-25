@@ -12,12 +12,16 @@ namespace ProgrammingQuestions.SymbolTables
         {
             //var bst = new IntBST(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9});
 
+            //var bst = new IntBST();
+            //var paths = bst.PathsWithSum(16);
+            //foreach (var path in paths)
+            //{
+            //    path.PrintToConsole();
+            //}
+
+            var array = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9};
             var bst = new IntBST();
-            var paths = bst.PathsWithSum(16);
-            foreach (var path in paths)
-            {
-                path.PrintToConsole();
-            }
+            bst.BuildFromArray(array);
         }
     }
 
@@ -28,14 +32,14 @@ namespace ProgrammingQuestions.SymbolTables
 
         public IntBST()
         {
-            root = new Node() { Value = 5 };
-            root.Left = new Node() { Value = 8};
-            root.Left.Left = new Node() { Value = 3 };
-            root.Left.Left.Left = new Node() { Value = 2 };
+            //root = new Node() { Value = 5 };
+            //root.Left = new Node() { Value = 8};
+            //root.Left.Left = new Node() { Value = 3 };
+            //root.Left.Left.Left = new Node() { Value = 2 };
 
-            root.Left.Right = new Node() { Value = 1 };
-            root.Left.Right.Left = new Node() { Value = 4 };
-            root.Left.Right.Right = new Node() { Value = 7 };
+            //root.Left.Right = new Node() { Value = 1 };
+            //root.Left.Right.Left = new Node() { Value = 4 };
+            //root.Left.Right.Right = new Node() { Value = 7 };
         }
 
         public IntBST(int[] array)
@@ -74,6 +78,29 @@ namespace ProgrammingQuestions.SymbolTables
             {
                 node.Value = x;
             }
+
+            return node;
+        }
+
+        public void BuildFromArray(int[] array) 
+        {
+            root = BuildFromArray(array, 0);
+        }
+
+        /// <summary>
+        /// Follows the array order.
+        /// </summary>
+        private Node BuildFromArray(int[] array, int index)
+        {
+            if (index >= array.Length) return null;
+
+            Node node = new Node() { Value = array[index] };
+
+            int leftIndex = ((index + 1) * 2) - 1;
+            int rightIndex = (index + 1) * 2;
+
+            node.Left = BuildFromArray(array, leftIndex);
+            node.Right = BuildFromArray(array, rightIndex);
 
             return node;
         }

@@ -213,7 +213,9 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.Facebook.BirdTree.Test();
 
-            ProgrammingQuestions.Facebook.GeeksForGeeks.Test();
+            //ProgrammingQuestions.Facebook.GeeksForGeeks.Test();
+
+            ProgrammingQuestions.Facebook.FindSumArray.Test();
         }
     }
 }
