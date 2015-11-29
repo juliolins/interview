@@ -82,8 +82,10 @@
     <Compile Include="Division.cs" />
     <Compile Include="ElementOccursOnce.cs" />
     <Compile Include="Facebook\BirdTree.cs" />
+    <Compile Include="Facebook\FaceStrings.cs" />
     <Compile Include="Facebook\FindSumArray.cs" />
     <Compile Include="Facebook\GeeksForGeeks.cs" />
+    <Compile Include="Facebook\Iterator.cs" />
     <Compile Include="Fibonacci.cs" />
     <Compile Include="GameScores.cs" />
     <Compile Include="Graph.cs" />
@@ -144,6 +146,7 @@
     <Compile Include="StringPermutation.cs" />
     <Compile Include="StringPermutations2.cs" />
     <Compile Include="Strings\CrackingCodeInterviewStrings.cs" />
+    <Compile Include="Strings\PatternMatch.cs" />
     <Compile Include="StringTransformation.cs" />
     <Compile Include="SumDigits.cs" />
     <Compile Include="SymbolTables\BinarySearchTree.cs" />

@@ -10,11 +10,16 @@ namespace ProgrammingQuestions
 
         public static void Test()
         {
-            //string text = "777-26 I am going home now using flight ";
+            string text = "xxx777-26 I am going home now using flight ";
 
-            //Console.WriteLine(IndexOf(text, "7*.26"));
+            Console.WriteLine(IndexOf(text, "7*.26"));
 
-            Console.WriteLine(IsMatch2("homelands", "homeland"));
+            //Console.WriteLine(IsMatch3("homelands", "homeland"));
+
+            Console.WriteLine(IndexOf("bbbaleeeeexandra", "al?*x"));
+
+            //Console.WriteLine(IsMatch3("al?", "ale"));
+
 
         }
 

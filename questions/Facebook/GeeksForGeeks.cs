@@ -10,12 +10,15 @@ namespace ProgrammingQuestions.Facebook
     {
         public static void Test()
         {
-            char[] encoding = "0123456789ABCDEF".ToCharArray();
+            //char[] encoding = "0123456789ABCDEF".ToCharArray();
 
-            Console.WriteLine(ConvertToBase(encoding, 435, 16));
+            //Console.WriteLine(ConvertToBase(encoding, 435, 16));
 
-            var results = ConvertNumbersToBaseRec(encoding, 50, 16);
-            results.PrintToConsole();
+            //var results = ConvertNumbersToBaseRec(encoding, 50, 16);
+            //results.PrintToConsole();
+
+            Console.WriteLine(ConvertToBase10("B"));
+            Console.WriteLine(ConvertToBase10("AA"));
         }
 
 
@@ -55,6 +58,18 @@ namespace ProgrammingQuestions.Facebook
 
             results[number] = result;
             return result;
+        }
+
+        public static int ConvertToBase10(string number)
+        {
+            int value = 0;
+            for (int i = 0; i < number.Length; i++)
+            {
+                value *= 26;
+                value += number[i] - 'A' + 1;
+            }
+
+            return value;
         }
     }
 }

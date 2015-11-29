@@ -65,7 +65,7 @@ namespace ProgrammingQuestions.SymbolTables
     }
 
 
-    public class BinarySearchTree<TKey, TValue> where TKey : IComparable
+    public class BinarySearchTree<TKey, TValue> where TKey : struct, IComparable
     {
         private Node<TKey, TValue> root;
 
@@ -226,6 +226,32 @@ namespace ProgrammingQuestions.SymbolTables
             node.Color = Color.Red;
             node.Left.Color = Color.Black;
             node.Right.Color = Color.Black;
+        }
+
+
+        public bool IsBST()
+        {
+            return IsBST(root, null, null);
+        }
+
+        private bool IsBST(Node<TKey, TValue> node, TKey? floor, TKey? ceiling)
+        {
+            if (node == null)
+            {
+                return true;
+            }
+            else if (floor.HasValue && node.Key.CompareTo(floor) < 0)
+            {
+                return false;
+            }
+            else if (ceiling.HasValue && node.Key.CompareTo(ceiling) > 0)
+            {
+                return false;
+            }
+            else
+            {
+                return IsBST(node.Left, floor, node.Key) && IsBST(node.Right, node.Key, ceiling);
+            }
         }
 
         public TValue this[TKey key]

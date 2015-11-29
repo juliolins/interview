@@ -215,7 +215,15 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.Facebook.GeeksForGeeks.Test();
 
-            ProgrammingQuestions.Facebook.FindSumArray.Test();
+            //ProgrammingQuestions.Facebook.FindSumArray.Test();
+
+            //ProgrammingQuestions.Facebook.FaceStrings.Test();
+
+            //ProgrammingQuestions.Strings.PatternMatch.Test();
+
+            //Regex.Test();
+
+            ProgrammingQuestions.Facebook.TestTreeWithIterator.Test();
         }
     }
 }
