@@ -82,6 +82,7 @@
     <Compile Include="Division.cs" />
     <Compile Include="ElementOccursOnce.cs" />
     <Compile Include="Facebook\BirdTree.cs" />
+    <Compile Include="Facebook\EqualTrees.cs" />
     <Compile Include="Facebook\FaceStrings.cs" />
     <Compile Include="Facebook\FindSumArray.cs" />
     <Compile Include="Facebook\GeeksForGeeks.cs" />
@@ -115,6 +116,10 @@
     <Compile Include="MediamTwoArrays.cs" />
     <Compile Include="MergeArrays.cs" />
     <Compile Include="MergeSort.cs" />
+    <Compile Include="Microsoft\CountPalindromes.cs" />
+    <Compile Include="Microsoft\GenericStack.cs" />
+    <Compile Include="Microsoft\GenericTree.cs" />
+    <Compile Include="Microsoft\MirrorTree.cs" />
     <Compile Include="MinimumCoins.cs" />
     <Compile Include="MoveGrid.cs" />
     <Compile Include="NumberToSentence.cs" />
