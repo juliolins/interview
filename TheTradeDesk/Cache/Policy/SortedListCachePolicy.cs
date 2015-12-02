@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using TheTradeDesk.Caching.Policy;
 
 namespace TheTradeDesk.Caching
 {
@@ -17,20 +16,14 @@ namespace TheTradeDesk.Caching
     /// Least Recently Used (LRU): remove from tail.
     /// Most Recently Used (MRU): remove from head.
     /// </summary>
-    /// 
-    /// <remarks>
-    ///     This policy can be either thread-safe or not depending on the ICacheLock implementation.
-    /// </remarks>
-    public class LinkedListCachePolicy<TKey, TValue> : ICachePolicy<TKey, TValue>
+    public class SortedListCachePolicy<TKey, TValue> : ICachePolicy<TKey, TValue>
     {
         private readonly LinkedList<TKey> list;
-        private readonly ICacheLock listLock;
         private readonly Func<LinkedList<TKey>, LinkedListNode<TKey>> chooseFunction;
 
-        public LinkedListCachePolicy(ICacheLock listLock, Func<LinkedList<TKey>, LinkedListNode<TKey>> chooseFunction)
+        public SortedListCachePolicy(Func<LinkedList<TKey>, LinkedListNode<TKey>> chooseFunction)
         {
             this.list = new LinkedList<TKey>();
-            this.listLock = listLock;
             this.chooseFunction = chooseFunction;
         }
 
@@ -42,16 +35,7 @@ namespace TheTradeDesk.Caching
             var node = new LinkedListNode<TKey>(key);
             var entry = new NodeCacheEntry<TKey, TValue>() { Key = key, Value = value, Node = node };
 
-            listLock.Wait();
-            try
-            {
-                list.AddFirst(node);
-            }
-            finally
-            {
-                listLock.Release();
-            }
-
+            list.AddFirst(node);
             return entry;
         }
 
@@ -63,17 +47,9 @@ namespace TheTradeDesk.Caching
             //an InvalidCastException is an acceptable behavior here for programmatic errors
             var nodeEntry = (NodeCacheEntry<TKey, TValue>) entry;
 
-            listLock.Wait();
-            try
-            {
-                //move node from its current position to head in constant time
-                list.Remove(nodeEntry.Node);
-                list.AddFirst(nodeEntry.Node);
-            }
-            finally
-            {
-                listLock.Release();
-            }
+            //move node from its current position to head in constant time
+            list.Remove(nodeEntry.Node);
+            list.AddFirst(nodeEntry.Node);
         }
 
         /// <summary>
@@ -81,29 +57,33 @@ namespace TheTradeDesk.Caching
         /// </summary>
         public bool Purge(out TKey key)
         {
-            listLock.Wait();
-            try
+            //only try to purge if there's an available entry
+            if (list.Count > 0)
             {
-                //only try to purge if there's an available entry
-                if (list.Count > 0)
-                {
-                    //let the function choose which node to remove
-                    var node = chooseFunction(list);
-                    list.Remove(node);
-                    key = node.Value;
-                    return true;
-                }
-                else
-                {
-                    key = default(TKey);
-                    return false;
-                }
+                //let the function choose which node to remove
+                var node = chooseFunction(list);
+                list.Remove(node);
+                key = node.Value;
+                return true;
             }
-            finally
+            else
             {
-                listLock.Release();
-            }            
+                key = default(TKey);
+                return false;
+            }
         }
+
+        /// <summary>
+        /// Deletes a specific node from the list.
+        /// </summary>
+        public void Delete(ICacheEntry<TKey, TValue> entry)
+        {
+            //an InvalidCastException is an acceptable behavior here for programmatic errors
+            var nodeEntry = (NodeCacheEntry<TKey, TValue>) entry;
+
+            list.Remove(nodeEntry.Node);
+        }
+
 
         /// <summary>
         /// Implementation of ICacheEntry which allows for the entry to

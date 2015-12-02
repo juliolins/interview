@@ -21,6 +21,7 @@ namespace TheTradeDesk.Caching
     {
         ICacheEntry<TKey, TValue> NewEntry(TKey key, TValue value);
         void Hit(ICacheEntry<TKey, TValue> entry);
+        void Delete(ICacheEntry<TKey, TValue> entry);
         bool Purge(out TKey key);
     }
 }

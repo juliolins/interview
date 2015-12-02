@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace TheTradeDesk.Caching.Policy
+namespace TheTradeDesk.Caching
 {
     /// <summary>
     /// Defines a simple interface to control thread access to a resource.

@@ -46,6 +46,7 @@
     <Compile Include="Cache.UT.cs" />
     <Compile Include="LinkedListCachePolicy.UT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SetAssociative.UT.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cache\Cache.csproj">

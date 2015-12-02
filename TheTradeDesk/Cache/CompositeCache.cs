@@ -8,12 +8,10 @@ namespace TheTradeDesk.Caching
 {
     /// <summary>
     /// Distributes requests among a collection of caches to reduce the lock wait time when accessing the cache.
-    /// Experimental idea for high concurrency and high capacity scenarios with many threads accessing the same cache.
+    /// Targets high concurrency and high capacity scenarios with many threads accessing the same cache.
     /// All operations on the 'cacheMap' array are read-only after the constructor so this class is thread safe.
-    /// 
-    /// ** Let's consider this class as not part of the actual implementation but an idea to be discussed later **
     /// </summary>
-    public class CompositeCache<TKey, TValue> : ICache<TKey, TValue>
+    public class SetAssociativeCache<TKey, TValue> : ICache<TKey, TValue>
     {
         private readonly ICache<TKey, TValue>[] cacheMap;
 
@@ -22,7 +20,7 @@ namespace TheTradeDesk.Caching
         /// The number of instances should be a prime number to improve the
         /// chances of an even distribution of requests.
         /// </summary>
-        public CompositeCache(IEnumerable<ICache<TKey, TValue>> caches)
+        public SetAssociativeCache(IEnumerable<ICache<TKey, TValue>> caches)
         {
             this.cacheMap = caches.ToArray();
         }
@@ -42,12 +40,17 @@ namespace TheTradeDesk.Caching
         {
             get
             {
-                return GetCache(key)[key];
+                return GetCache(key).Get(key);
             }
             set
             {
-                GetCache(key)[key] = value;
+                GetCache(key).Add(key, value);
             }
+        }
+
+        public bool Remove(TKey key)
+        {
+            return GetCache(key).Remove(key);
         }
     }
 }

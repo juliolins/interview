@@ -42,11 +42,11 @@
   <ItemGroup>
     <Compile Include="Cache.cs" />
     <Compile Include="CacheBuilder.cs" />
+    <Compile Include="CacheLock.cs" />
     <Compile Include="CompositeCache.cs" />
     <Compile Include="ICache.cs" />
     <Compile Include="ICachePolicy.cs" />
-    <Compile Include="Policy\CacheLock.cs" />
-    <Compile Include="Policy\LinkedListCachePolicy.cs" />
+    <Compile Include="Policy\SortedListCachePolicy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

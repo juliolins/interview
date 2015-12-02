@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TheTradeDesk.Caching
 {
@@ -17,47 +18,101 @@ namespace TheTradeDesk.Caching
     public class Cache<TKey, TValue> : ICache<TKey, TValue>
     {
         private readonly long totalCapacity;
-        private readonly IDictionary<TKey, ICacheEntry<TKey, TValue>> entries;
+        private readonly IDictionary<TKey, ICacheEntry<TKey, TValue>> entries = new Dictionary<TKey, ICacheEntry<TKey, TValue>>();
         private readonly ICachePolicy<TKey, TValue> policy;
+        private readonly ICacheLock cacheLock;
 
-        public Cache(IDictionary<TKey, ICacheEntry<TKey, TValue>> entries, ICachePolicy<TKey, TValue> policy, long totalCapacity)
+        public Cache(ICachePolicy<TKey, TValue> policy, ICacheLock cacheLock, long totalCapacity)
         {
             this.policy = policy;
+            this.cacheLock = cacheLock;
             this.totalCapacity = totalCapacity;
-            this.entries = entries;
+        }
+
+        public bool ContainsKey(TKey key)
+        {
+            return FunctionWithinLock<bool>(() => entries.ContainsKey(key));
         }
 
         public TValue this[TKey key]
         {
             get
             {
-                return entries[key].Value;
+                return FunctionWithinLock<TValue>(() => 
+                {
+                    var entry = entries[key];
+                    policy.Hit(entry); //New 1.01: bug fix from the initial version. Missed calling policy.Hit()
+                    return entry.Value;
+                });
             }
             set
             {
-                //check if we've reached capacity and need to purge one entry before adding a new one
-                //thread safety: check and increment in different operations are OK in this case as 
-                //concurrent threads will do add->remove sequentially which will maintain capacity
-                //this is safe because the cache doesn't support a Delete operation
-                if (entries.Count >= totalCapacity)
+                ActionWithinLock(() =>
                 {
-                    //ask the policy which entry to remove
-                    TKey purgedKey = default(TKey);
-                    if (policy.Purge(out purgedKey))
+                    if (entries.Count >= totalCapacity)
                     {
-                        entries.Remove(purgedKey);
+                        //ask the policy which entry to remove
+                        TKey purgedKey = default(TKey);
+                        if (policy.Purge(out purgedKey))
+                        {
+                            entries.Remove(purgedKey);
+                        }
                     }
-                }
 
-                //create a new entry and add it
-                var newEntry = policy.NewEntry(key, value);
-                entries.Add(key, newEntry);
+                    //create a new entry and add it
+                    var newEntry = policy.NewEntry(key, value);
+                    entries.Add(key, newEntry);
+                });
             }
         }
 
-        public bool ContainsKey(TKey key)
+        public bool Remove(TKey key)
         {
-            return entries.ContainsKey(key);
+            return FunctionWithinLock<bool>(() =>
+            {
+                //returns true if the key existed in the dictionary
+                bool deleteOk = entries.ContainsKey(key);
+                if (deleteOk)
+                {
+                    var entry = entries[key];
+                    policy.Delete(entry);
+                    entries.Remove(key);
+                }
+
+                return deleteOk;
+            });            
+        }
+
+        /// <summary>
+        /// Helper method to assure a block of code is run within the scope of the ICacheLock.
+        /// </summary>
+        private void ActionWithinLock(Action action)
+        {
+            try
+            {
+                cacheLock.Wait();
+                action();
+            }
+            finally
+            {
+                cacheLock.Release();
+            }
+        }
+
+        /// <summary>
+        /// Helper method to assure a block of code is run within the scope of the ICacheLock.
+        /// </summary>
+        private T FunctionWithinLock<T>(Func<T> function)
+        {
+            try
+            {
+                cacheLock.Wait();
+                return function();
+            }
+            finally
+            {
+                cacheLock.Release();
+            }
         }
     }
 }

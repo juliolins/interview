@@ -1,20 +1,15 @@
 ﻿using NUnit.Framework;
 using TheTradeDesk.Caching;
-using TheTradeDesk.Caching.Policy;
 
 namespace Cache.Test
 {
     [TestFixture]
     public class LinkedListCachePolicyUT
     {
-        /// <summary>
-        /// Sanity test.
-        /// </summary>
-        [TestCase(true)]
-        [TestCase(false)]
-        public void LruPurgesLeastRecent(bool isLocked)
+        [Test]
+        public void LruPurgesLeastRecent()
         {
-            var lru = CacheBuilder.LRU_Policy<int, int>(GetLock(isLocked));
+            var lru = CacheBuilder.LRU_Policy<int, int>();
 
             lru.NewEntry(1, 10);
             lru.NewEntry(2, 20);
@@ -23,14 +18,10 @@ namespace Cache.Test
             AssertPurged(lru, 1);
         }
 
-        /// <summary>
-        /// Sanity test.
-        /// </summary>
-        [TestCase(true)]
-        [TestCase(false)]
-        public void MruPurgesMostRecent(bool isLocked)
+        [Test]
+        public void MruPurgesMostRecent()
         {
-            var mru = CacheBuilder.MRU_Policy<int, int>(GetLock(isLocked));
+            var mru = CacheBuilder.MRU_Policy<int, int>();
 
             mru.NewEntry(1, 10);
             mru.NewEntry(2, 20);
@@ -42,7 +33,7 @@ namespace Cache.Test
         [Test]
         public void HitUpdatesPosition()
         {
-            var lru = CacheBuilder.LRU_Policy<int, int>(new NoOpLock());
+            var lru = CacheBuilder.LRU_Policy<int, int>();
 
             var entry1 = lru.NewEntry(1, 10);
             lru.NewEntry(2, 20);
@@ -57,7 +48,7 @@ namespace Cache.Test
         [Test]
         public void SupportsConsecutiveHits()
         {
-            var lru = CacheBuilder.LRU_Policy<int, int>(new NoOpLock());
+            var lru = CacheBuilder.LRU_Policy<int, int>();
 
             var entry1 = lru.NewEntry(1, 10);
             var entry2 = lru.NewEntry(2, 20);
@@ -78,7 +69,7 @@ namespace Cache.Test
         [Test]
         public void PurgeReturnsFalseWhenEmpty()
         {
-            var lru = CacheBuilder.LRU_Policy<int, int>(new NoOpLock());
+            var lru = CacheBuilder.LRU_Policy<int, int>();
 
             int purgedKey = 0;
             Assert.IsFalse(lru.Purge(out purgedKey));
@@ -89,18 +80,6 @@ namespace Cache.Test
             TKey purgedKey = default(TKey);
             Assert.IsTrue(policy.Purge(out purgedKey));
             Assert.AreEqual(expectedKey, purgedKey);
-        }
-
-        private ICacheLock GetLock(bool isLocked)
-        {
-            if (isLocked)
-            {
-                return new SemaphoreWriteLock();
-            }
-            else
-            {
-                return new NoOpLock();
-            }
         }
     }
 }
