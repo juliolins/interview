@@ -19,12 +19,12 @@ namespace TheTradeDesk.Caching
     public class SortedListCachePolicy<TKey, TValue> : ICachePolicy<TKey, TValue>
     {
         private readonly LinkedList<TKey> list;
-        private readonly Func<LinkedList<TKey>, LinkedListNode<TKey>> chooseFunction;
+        private readonly Func<LinkedList<TKey>, LinkedListNode<TKey>> nodeSelector;
 
-        public SortedListCachePolicy(Func<LinkedList<TKey>, LinkedListNode<TKey>> chooseFunction)
+        public SortedListCachePolicy(Func<LinkedList<TKey>, LinkedListNode<TKey>> nodeSelector)
         {
             this.list = new LinkedList<TKey>();
-            this.chooseFunction = chooseFunction;
+            this.nodeSelector = nodeSelector;
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace TheTradeDesk.Caching
             if (list.Count > 0)
             {
                 //let the function choose which node to remove
-                var node = chooseFunction(list);
+                var node = nodeSelector(list);
                 list.Remove(node);
                 key = node.Value;
                 return true;
