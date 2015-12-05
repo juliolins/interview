@@ -122,6 +122,7 @@
     <Compile Include="Microsoft\MirrorTree.cs" />
     <Compile Include="MinimumCoins.cs" />
     <Compile Include="MoveGrid.cs" />
+    <Compile Include="Numbers\Math.cs" />
     <Compile Include="NumberToSentence.cs" />
     <Compile Include="OverlapLists.cs" />
     <Compile Include="Palindrome.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="StringPermutation.cs" />
     <Compile Include="StringPermutations2.cs" />
     <Compile Include="Strings\CrackingCodeInterviewStrings.cs" />
+    <Compile Include="Strings\ExpressionEvaluator.cs" />
     <Compile Include="Strings\PatternMatch.cs" />
     <Compile Include="StringTransformation.cs" />
     <Compile Include="SumDigits.cs" />

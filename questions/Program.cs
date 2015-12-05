@@ -223,7 +223,13 @@ namespace ProgrammingQuestions
 
             //Regex.Test();
 
-            ProgrammingQuestions.Facebook.TestTreeWithIterator.Test();
+            //ProgrammingQuestions.Facebook.TestTreeWithIterator.Test();
+
+            //ProgrammingQuestions.Strings.ExpressionEvaluator.Test();
+
+            //ProgrammingQuestions.Recursion.RecursionTest.Test();
+
+            ProgrammingQuestions.Numbers.TheMath.Test();
         }
     }
 }

@@ -48,8 +48,10 @@ namespace ProgrammingQuestions.Recursion
             //    line.PrintToConsole();
             //}
 
-            Console.WriteLine("Count = " + CrackingRecursion.NumberOfWaysCoins(100));
-            Console.WriteLine("Cost: " + CrackingRecursion.cost);
+            //Console.WriteLine("Count = " + CrackingRecursion.NumberOfWaysCoins(100));
+            //Console.WriteLine("Cost: " + CrackingRecursion.cost);
+
+            Console.WriteLine(CrackingRecursion.IsThereSumZero2(new int[]{-1, 2, -3, 1}));
         }
     }
 
@@ -243,5 +245,61 @@ namespace ProgrammingQuestions.Recursion
                 Navigate(matrix, i, j + 1, shoudlVisit, visit);
             }
         }
+
+        //Given an array of integers, find whether there are 3 of them which sum to 0.
+        public static bool IsThereSumZero(int[] array)
+        {
+            return IsThereSumZero(array, 0, 0, 3);
+        }
+
+        private static bool IsThereSumZero(int[] array, int start, int sum, int toGo)
+        {
+            if (toGo == 0)
+            {
+                return sum == 0;
+            }
+
+            for (int i = start; i < array.Length; i++)
+            {
+                if (IsThereSumZero(array, i + 1, sum + array[i], toGo - 1))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static bool IsThereSumZero2(int[] array)
+        {
+            Array.Sort(array);
+
+            for (int i = 0; i < array.Length - 2; i++)
+            {
+                int left = i + 1;
+                int right = array.Length - 1;
+
+                while (left < right)
+                {
+                    int sum = array[i] + array[left] + array[right];
+
+                    if (sum == 0)
+                    {
+                        return true;
+                    }
+                    else if (sum < 0)
+                    {
+                        left++;
+                    }
+                    else
+                    {
+                        right--;
+                    }
+                }
+            }
+
+            return false;
+        }
+
     }
 }
