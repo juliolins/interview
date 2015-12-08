@@ -229,7 +229,11 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.Recursion.RecursionTest.Test();
 
-            ProgrammingQuestions.Numbers.TheMath.Test();
+            //ProgrammingQuestions.Numbers.TheMath.Test();
+
+            //ProgrammingQuestions.Arrays.AmazonArrays.Test();
+
+            ProgrammingQuestions.CrackingTough.Sequences.Test();
         }
     }
 }

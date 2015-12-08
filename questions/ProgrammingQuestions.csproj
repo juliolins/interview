@@ -50,6 +50,7 @@
     <Compile Include="AllSubsets.cs" />
     <Compile Include="All_Permutations.cs" />
     <Compile Include="ArrayOfDigits.cs" />
+    <Compile Include="Arrays\AmazonArrays.cs" />
     <Compile Include="Arrays\CrackingArrays.cs" />
     <Compile Include="Assert.cs" />
     <Compile Include="BaseConversion.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="CircularShift.cs" />
     <Compile Include="Combination.cs" />
     <Compile Include="CountWaysStep.cs" />
+    <Compile Include="CrackingTough\Sequences.cs" />
     <Compile Include="CrackingTough\SortByType_Jorge.cs" />
     <Compile Include="CrackingTough\TicTacToe.cs" />
     <Compile Include="DataStructures\LinkedList.cs" />
