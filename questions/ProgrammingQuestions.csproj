@@ -72,8 +72,11 @@
     <Compile Include="CircularShift.cs" />
     <Compile Include="Combination.cs" />
     <Compile Include="CountWaysStep.cs" />
+    <Compile Include="CrackingTough\CrackingNumbers.cs" />
+    <Compile Include="CrackingTough\Median.cs" />
     <Compile Include="CrackingTough\Sequences.cs" />
     <Compile Include="CrackingTough\SortByType_Jorge.cs" />
+    <Compile Include="CrackingTough\Strings.cs" />
     <Compile Include="CrackingTough\TicTacToe.cs" />
     <Compile Include="DataStructures\LinkedList.cs" />
     <Compile Include="DataStructures\QueueTwoStacks.cs" />

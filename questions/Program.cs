@@ -233,7 +233,13 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.Arrays.AmazonArrays.Test();
 
-            ProgrammingQuestions.CrackingTough.Sequences.Test();
+            //ProgrammingQuestions.CrackingTough.Sequences.Test();
+
+            //ProgrammingQuestions.CrackingTough.CrackingNumbers.Test();
+
+            //ProgrammingQuestions.CrackingTough.Strings.Test();
+
+            //ProgrammingQuestions.CrackingTough.MedianTrackerTest.Test();
         }
     }
 }
