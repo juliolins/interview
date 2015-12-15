@@ -229,7 +229,9 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.Recursion.RecursionTest.Test();
 
-            ProgrammingQuestions.Numbers.TheMath.Test();
+            //ProgrammingQuestions.Numbers.TheMath.Test();
+
+            ProgrammingQuestions.CrackingTough.NumbertoEnglishPhrase.Test();
         }
     }
 }
