@@ -157,6 +157,24 @@ namespace ProgrammingQuestions.SymbolTables
             currentList.RemoveAt(currentList.Count - 1);
         }
 
+        public void SetNext()
+        {
+            var queue = new Queue<Node>();
+            queue.Enqueue(root);
+            Node last = root;
+
+            while (queue.Count > 0)
+            {
+                var node = queue.Dequeue();
+                last.Next = node;
+                last = node;
+
+                if (node.Left != null) queue.Enqueue(node.Left);
+                if (node.Right != null) queue.Enqueue(node.Right);
+            }
+        }
+
+
         private class Node
         {
             public int Value { get; set; }

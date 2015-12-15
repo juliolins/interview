@@ -10,7 +10,7 @@ namespace ProgrammingQuestions.Strings
     {
         public static void Test()
         {
-            Console.WriteLine(FindMatch("ale.*x", "aleeeeexandra"));
+            Console.WriteLine(IsMatch2("aleeeeexandra", "b*x"));
         }
 
 
@@ -76,6 +76,51 @@ namespace ProgrammingQuestions.Strings
         private static bool IsCharMatch(char patternChar, char strChar)
         {
             return patternChar == '.' || patternChar == strChar;
+        }
+
+        public static bool IsMatch2(string str, string pattern)
+        {
+            return IsMatch2(str, pattern, 0, 0);
+        }
+
+        public static bool IsMatch2(string str, string pattern, int strIndex, int patternStartIndex)
+        {
+            int patternIndex = patternStartIndex;
+
+            while (patternIndex < pattern.Length && strIndex < str.Length)
+            {
+                //* means 0 or more so we can basically ignore the current char in the pattern
+                //and recursively check for the next char in the pattern
+                if (IsNextStar(pattern, patternIndex + 1))
+                {
+                    return IsMatch2(str, pattern, strIndex, patternIndex + 2);
+                }
+                else if (IsCharMatch(str, pattern, strIndex, patternIndex))
+                {
+                    patternIndex++;
+                }
+                else
+                {
+                    //not a match, return to start of pattern
+                    patternIndex = patternStartIndex;
+                }
+
+                strIndex++;
+            }
+
+            //return true if we ran out of the pattern instead of running out of the str
+            //>= because of the recursive call that has a "+2" for the patternIndex
+            return patternIndex >= pattern.Length;
+        }
+
+        private static bool IsNextStar(string pattern, int index)
+        {
+            return index < pattern.Length && pattern[index] == '*';
+        }
+
+        private static bool IsCharMatch(string str, string pattern, int strIndex, int patternIndex)
+        {
+            return pattern[patternIndex] == '.' || pattern[patternIndex] == str[strIndex];
         }
     }
 }
