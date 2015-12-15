@@ -229,9 +229,8 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.Recursion.RecursionTest.Test();
 
-            //ProgrammingQuestions.Numbers.TheMath.Test();
+            //ProgrammingQuestions.CrackingTough.NumbertoEnglishPhrase.Test();
 
-            ProgrammingQuestions.CrackingTough.NumbertoEnglishPhrase.Test();
             //ProgrammingQuestions.Numbers.TheMath.Test();
 
             //ProgrammingQuestions.Arrays.AmazonArrays.Test();
@@ -242,7 +241,7 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.CrackingTough.Strings.Test();
 
-            //ProgrammingQuestions.CrackingTough.MedianTrackerTest.Test();
+            ProgrammingQuestions.CrackingTough.MedianTrackerTest.Test();
         }
     }
 }
