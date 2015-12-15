@@ -75,6 +75,7 @@
     <Compile Include="CrackingTough\CrackingNumbers.cs" />
     <Compile Include="CrackingTough\Median.cs" />
     <Compile Include="CrackingTough\Sequences.cs" />
+    <Compile Include="CrackingTough\NumbertoEnglishPhrase.cs" />
     <Compile Include="CrackingTough\SortByType_Jorge.cs" />
     <Compile Include="CrackingTough\Strings.cs" />
     <Compile Include="CrackingTough\TicTacToe.cs" />
