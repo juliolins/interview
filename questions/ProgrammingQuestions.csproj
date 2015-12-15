@@ -52,6 +52,7 @@
     <Compile Include="ArrayOfDigits.cs" />
     <Compile Include="Arrays\AmazonArrays.cs" />
     <Compile Include="Arrays\CrackingArrays.cs" />
+    <Compile Include="Arrays\GoogleArrays.cs" />
     <Compile Include="Assert.cs" />
     <Compile Include="BaseConversion.cs" />
     <Compile Include="BiggestSubarray.cs" />

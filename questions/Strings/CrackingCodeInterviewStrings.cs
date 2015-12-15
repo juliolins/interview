@@ -14,10 +14,36 @@ namespace ProgrammingQuestions.Strings
             //char[] str = "aaaaabbb".ToCharArray();
             //Console.WriteLine(string.Format("{0} = {1}", str.Print(), RemoveDuplicates(str)));
 
-            string s = "the book is on the table ";
-            Console.WriteLine(s);
-            Console.WriteLine(Replace(s, "%20"));
+            //string s = "the book is on the table ";
+            //Console.WriteLine(s);
+            //Console.WriteLine(Replace(s, "%20"));
 
+
+            Console.WriteLine(string.Format("[{0}]", RemoveSpaces("  I   live   on     earth ".ToCharArray())));
+        }
+
+        //Given a string of words with lots of spaces between the words , remove all the unnecessary spaces like
+        //input:  I   live   on     earth  
+        //output: I live on earth
+        public static string RemoveSpaces(char[] text)
+        {
+            int left = 0;
+            bool isFirst = true;
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (text[i] != ' ')
+                {
+                    text[left++] = text[i];
+                    isFirst = false;
+                }
+                else if ((i + 1 < text.Length) && text[i + 1] != ' ' && !isFirst)
+                {
+                    text[left++] = ' ';
+                }
+            }
+
+            return new string(text, 0, left);
         }
 
         public static string Replace(string str, string value)
