@@ -240,6 +240,8 @@ namespace ProgrammingQuestions
             //ProgrammingQuestions.CrackingTough.Strings.Test();
 
             //ProgrammingQuestions.CrackingTough.MedianTrackerTest.Test();
+
+            ProgrammingQuestions.CrackingTough.WordDistance.Test();
         }
     }
 }

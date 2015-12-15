@@ -78,6 +78,7 @@
     <Compile Include="CrackingTough\SortByType_Jorge.cs" />
     <Compile Include="CrackingTough\Strings.cs" />
     <Compile Include="CrackingTough\TicTacToe.cs" />
+    <Compile Include="CrackingTough\WordDistance.cs" />
     <Compile Include="DataStructures\LinkedList.cs" />
     <Compile Include="DataStructures\QueueTwoStacks.cs" />
     <Compile Include="DataStructures\Stack.cs" />
