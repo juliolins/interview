@@ -88,4 +88,104 @@ namespace ProgrammingQuestions.CrackingTough
             return j;
         }
     }
+
+/*
+// This is the text editor interface. 
+// Anything you type or change here will be seen by the other person in real time.
+
+
+
+On a city grid, choose a point to build a business that
+minimizes the distance to your customers.  
+  ---------------------
+  | a | b |   |   |   |
+  ---------------------
+  |   | 0 |   |   | 0 |
+  ---------------------
+  |   |   | 0 |   |   |
+  ---------------------
+  |   |   |   |   |   |
+  ---------------------
+  | 0 |   |   | 0 |   |
+  ---------------------
+
+D(a)= N
+D(b)= D(a) +/- ?
+
+  ---------------------
+  | 0 |   |   |   |   |
+  ---------------------
+  |0Z | X | Y |   | 0 |
+  ---------------------
+  | 0 |   |   |   |   |
+  ---------------------
+
+
+(0, 0)
+(1, 0)
+(2, 0)
+(1, 4)
+
+(1, 1) => (1, 1)
+
+X: 2 + 1 + 2 + 3 = 8
+Z: 1 + 0 + 1 + 4 = 6
+
+i {0, 1, 1, 2}
+j {0, 0, 0, 4}
+
+public Point FindPlace(int[][] matrix)
+{
+    var iCostumerIndexes = new List<int>();
+    var jCostumerIndexes = new List<int>();    
+
+    //find costumers
+    for (int i = 0; i < matrix.Length; i++)
+    {
+        for (int j = 0; j < matrix[0].Length; j++)
+        {
+            if (matrix[i][j] == 0)
+            {
+                iCostumerIndexes.Add(i);
+                jCostumerIndexes.Add(j);
+            }
+        }
+    }
+    
+    int minXDistance = Int.MaxValue;
+    int minYDistance = Int.MaxValue;
+    int xPlace = -1;
+    int yPlace = -1;
+    
+
+    for (int i = 0; i < matrix.Length; i++)
+    {
+            int xDistance = iCustmerIndexes.Select(index => Math.Abs(index - i)).Aggregate((a, b) => a + b);
+
+            if (xDistance < minXDistance) 
+            {
+                minXDistance = xDistance;
+                xPlace = i;
+            }
+    }    
+    
+    for (int i = 0; i < matrix[0].Length; i++)
+    {
+            int yDistance = jCustmerIndexes.Select(index => Math.Abs(index - i)).Aggregate((a, b) => a + b);
+
+            if (yDistance < minYDistance) 
+            {
+                minYDistance = yDistance;
+                yPlace = i;
+            }
+    }    
+    
+    return new Point(xPlace, yPlace);
+}
+
+// O(M x N x C)
+// O((M + N) x C)
+
+
+*/ 
 }
