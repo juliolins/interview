@@ -243,11 +243,13 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.CrackingTough.MedianTrackerTest.Test();
 
-            ProgrammingQuestions.CrackingTough.WordDistance.Test();
-            ProgrammingQuestions.CrackingTough.MedianTrackerTest.Test();
+            //ProgrammingQuestions.CrackingTough.WordDistance.Test();
+            //ProgrammingQuestions.CrackingTough.MedianTrackerTest.Test();
             //ProgrammingQuestions.CrackingTough.MedianTrackerTest.Test();
 
-            ProgrammingQuestions.Strings.CrackingCodeInterviewStrings.Test();
+            //ProgrammingQuestions.Strings.CrackingCodeInterviewStrings.Test();
+
+            ProgrammingQuestions.Arrays.GoogleArrays.Test();
         }
     }
 }
