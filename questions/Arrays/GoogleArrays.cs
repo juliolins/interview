@@ -22,7 +22,7 @@ namespace ProgrammingQuestions.Arrays
                 array[i] = new bool[10];
             }
 
-            DrawLine(array, 1, 1, 2, 8);
+            DrawLineBresenham(array, 1, 1, 9, 8);
             PrintLine(array);
         }
 
@@ -46,6 +46,30 @@ namespace ProgrammingQuestions.Arrays
             }
         }
 
+        public static void DrawLineBresenham(bool[][] array, int x1, int y1, int x2, int y2)
+        {
+            //first point
+            double deltaX = x2 - x1;
+            double deltaY = y2 - y1;
+            double e = 0;
+            double m = Math.Abs(deltaY / deltaX);
+
+            int y = y1;
+            for (int x = x1; x <= x2; x++)
+            {
+                array[x][y] = true;
+
+                if (e + m < 0.5)
+                {
+                    e = e + m;
+                }
+                else
+                {
+                    y = y + 1;
+                    e = e + m - 1;
+                }
+            }
+        }
 
 
         //http://www.geeksforgeeks.org/minimum-number-of-swaps-required-for-arranging-pairs-adjacent-to-each-other
