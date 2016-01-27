@@ -138,6 +138,14 @@ namespace ProgrammingQuestions.CrackingTough
 
             return words.Select(word => trie.Get(word));
         }
+
+        private static string LongestCommonSubstring(string wordA, string wordB)
+        {
+            //build a sufix trie for wordA
+            //for each char ch in wordB, navigate through the trie starting from 
+            //ch and going until the end of wordB, largest path is returned.
+            throw new NotImplementedException();
+        }
     }
 
 

@@ -22,17 +22,20 @@ namespace ProgrammingQuestions.Arrays
             //Rotate(matrix);
             //Print(matrix);
 
-            int[][] matrix = new int[][] 
-            {
-                new int[] {1, 2, 3},
-                new int[] {4, 0, 6},
-                new int[] {7, 8, 9}
-            };
+            //int[][] matrix = new int[][] 
+            //{
+            //    new int[] {1, 2, 3},
+            //    new int[] {4, 0, 6},
+            //    new int[] {7, 8, 9}
+            //};
 
-            Print(matrix);
-            Console.WriteLine();
-            SetRowColumnToZero(matrix);
-            Print(matrix);
+            //Print(matrix);
+            //Console.WriteLine();
+            //SetRowColumnToZero(matrix);
+            //Print(matrix);
+
+            int[] array = new int[] { 8, 4, 2, 1 };
+            Console.WriteLine(CountInversions(array));
 
         }
 
@@ -118,7 +121,47 @@ namespace ProgrammingQuestions.Arrays
             string s1s1 = s1 + s1;
             return s1s1.Contains(s2);
         }
+        public static int CountInversions(int[] array)
+        {
+            int[][] inversions = new int[array.Length][];
+            for (int i = 0; i < array.Length; i++)
+            {
+                inversions[i] = new int[4];
+            }
 
-        
+            return CountInversions(array, 0, 3, int.MaxValue, inversions);
+        }
+
+        private static int CountInversions(int[] array, int start, int amount, int last, int[][] inversions)
+        {
+            if (start == array.Length && amount != 0)
+            {
+                return 0;
+            }
+
+            if (amount == 0)
+            {
+                return 1;
+            }
+
+            if (inversions[start][amount] > 0)
+            {
+                return inversions[start][amount];
+            }
+
+            int count = 0;
+
+            for (int i = start; i < array.Length; i++)
+            {
+                if (array[i] < last)
+                {
+                    count += CountInversions(array, i + 1, amount - 1, array[i], inversions);
+                }
+            }
+
+            inversions[start][amount] = count;
+
+            return count;
+        }
     }
 }

@@ -82,12 +82,15 @@
     <Compile Include="CrackingTough\TicTacToe.cs" />
     <Compile Include="CrackingTough\WordDistance.cs" />
     <Compile Include="DataStructures\LinkedList.cs" />
+    <Compile Include="DataStructures\MergedLinkedLists.cs" />
     <Compile Include="DataStructures\QueueTwoStacks.cs" />
+    <Compile Include="DataStructures\SortLinkedList.cs" />
     <Compile Include="DataStructures\Stack.cs" />
     <Compile Include="DetecOddNumber.cs" />
     <Compile Include="DigitsDifference.cs" />
     <Compile Include="DistincElementsWindow.cs" />
     <Compile Include="Division.cs" />
+    <Compile Include="Dynamic\SubsetDifference.cs" />
     <Compile Include="ElementOccursOnce.cs" />
     <Compile Include="Facebook\BirdTree.cs" />
     <Compile Include="Facebook\EqualTrees.cs" />
@@ -160,6 +163,7 @@
     <Compile Include="StringPermutation.cs" />
     <Compile Include="StringPermutations2.cs" />
     <Compile Include="Strings\CrackingCodeInterviewStrings.cs" />
+    <Compile Include="Strings\EditDistance.cs" />
     <Compile Include="Strings\ExpressionEvaluator.cs" />
     <Compile Include="Strings\PatternMatch.cs" />
     <Compile Include="StringTransformation.cs" />

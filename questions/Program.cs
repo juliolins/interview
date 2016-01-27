@@ -249,7 +249,17 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.Strings.CrackingCodeInterviewStrings.Test();
 
-            ProgrammingQuestions.Arrays.GoogleArrays.Test();
+            //ProgrammingQuestions.Arrays.GoogleArrays.Test();
+
+            //ProgrammingQuestions.Arrays.CrackingArrays.TestRotate();
+
+            //ProgrammingQuestions.DataStructures.MergedLinkedLists.Test();
+
+            //ProgrammingQuestions.DataStructures.SortLinkedList.Test();
+
+            //ProgrammingQuestions.Strings.EditDistance.Test();
+
+            ProgrammingQuestions.Dynamic.SubsetDifference.Test();
         }
     }
 }
