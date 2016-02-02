@@ -19,9 +19,14 @@ namespace ProgrammingQuestions.SymbolTables
             //    path.PrintToConsole();
             //}
 
-            var array = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9};
-            var bst = new IntBST();
-            bst.BuildFromArray(array);
+            //var array = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9};
+            //var bst = new IntBST();
+            //bst.BuildFromArray(array);
+
+            //Console.WriteLine(bst.MinHeight());
+
+            Console.WriteLine(IntBST.IsPreOrder(new int[] { 40, 30, 35, 80, 100 }));
+            Console.WriteLine(IntBST.IsPreOrder(new int[] { 40, 30, 35, 20, 80, 100 }));
         }
     }
 
@@ -174,6 +179,146 @@ namespace ProgrammingQuestions.SymbolTables
             }
         }
 
+        public int MinHeight()
+        {
+            if (root == null) return 0;
+
+            Queue<Node> queue = new Queue<Node>();
+            queue.Enqueue(root);
+            Node first = root;
+            int level = 1;
+
+            while (queue.Count > 0)
+            {
+                Node node = queue.Dequeue();
+
+                if (node.Left == null && node.Right == null)
+                {
+                    return level;
+                }
+
+                if (node == first)
+                {
+                    level++;
+                    first = null;
+                }
+
+                if (node.Left != null)
+                {
+                    queue.Enqueue(node.Left);
+                    if (first == null) first = node.Left;
+                }
+
+                if (node.Right != null)
+                {
+                    queue.Enqueue(node.Right);
+                    if (first == null) first = node.Right;
+                }
+            }
+
+            return level;
+        }
+
+        public int MaxSumPath()
+        {
+            if (root == null) return 0;
+
+            int maxSum = int.MinValue;
+            var stack = new Stack<Node>();
+            var current = root;
+
+            while (current != null || stack.Count > 0)
+            {
+                if (current != null)
+                {
+                    stack.Push(current);
+                    current = current.Left;
+                }
+                else
+                {
+                    current = stack.Pop();
+
+                    int sum = SumPath(current);
+                    if (sum > maxSum)
+                    {
+                        maxSum = sum;
+                    }
+
+                    current = current.Right;
+                }
+            }
+
+            return maxSum;
+        }
+
+        private int SumPath(Node node)
+        {
+            if (node == null) return 0;
+
+            int value = node.Value + Math.Max(SumPath(node.Left), SumPath(node.Right));
+            return Math.Max(0, value);
+        }
+
+        public static bool IsPreOrder(int[] array)
+        {
+            var stack = new Stack<int>();
+            int root = int.MinValue;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                int node = array[i];
+
+                if (node < root)
+                {
+                    return false;
+                }
+
+                while (stack.Count > 0 && stack.Peek() < node)
+                {
+                    root = stack.Pop();
+                }
+
+                stack.Push(node);
+            }
+
+            return true;
+        }
+
+        public bool IsFull()
+        {
+            return IsFull(root);
+        }
+
+        private bool IsFull(Node root)
+        {
+            if (root == null) return true;
+            else if (root.Left == null && root.Right == null) return true;
+            else if (root.Left != null && root.Right != null) return IsFull(root.Left) && IsFull(root.Right);
+            else return false;
+        }
+
+        public void RemoveWithShortPath(int k)
+        {
+            int rootLength;
+            root = RemoveWithShortPath(root, k, 1, out rootLength);
+        }
+
+        //http://www.geeksforgeeks.org/remove-nodes-root-leaf-paths-length-k/
+        private Node RemoveWithShortPath(Node node, int k, int level, out int maxLength)
+        {
+            if (node == null)
+            {
+                maxLength = level - 1;
+                return null;
+            }
+
+            int leftLength, rightLength;
+            node.Left = RemoveWithShortPath(node.Left, k, level + 1, out leftLength);
+            node.Left = RemoveWithShortPath(node.Right, k, level + 1, out rightLength);
+
+            maxLength = Math.Max(leftLength, rightLength);
+            return (maxLength >= k) ? node : null;
+        }
 
         private class Node
         {

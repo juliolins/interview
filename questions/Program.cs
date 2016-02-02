@@ -259,7 +259,13 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.Strings.EditDistance.Test();
 
-            ProgrammingQuestions.Dynamic.SubsetDifference.Test();
+            //ProgrammingQuestions.Dynamic.SubsetDifference.Test();
+
+            //ProgrammingQuestions.Dynamic.LongestIncresingSubsequence.Test();
+
+            //ProgrammingQuestions.Dynamic.GameStrategy.Test();
+
+            ProgrammingQuestions.SymbolTables.IntBSTTest.Test();
         }
     }
 }

@@ -52,6 +52,7 @@
     <Compile Include="ArrayOfDigits.cs" />
     <Compile Include="Arrays\AmazonArrays.cs" />
     <Compile Include="Arrays\CrackingArrays.cs" />
+    <Compile Include="Arrays\GeekArrays.cs" />
     <Compile Include="Arrays\GoogleArrays.cs" />
     <Compile Include="Assert.cs" />
     <Compile Include="BaseConversion.cs" />
@@ -90,6 +91,8 @@
     <Compile Include="DigitsDifference.cs" />
     <Compile Include="DistincElementsWindow.cs" />
     <Compile Include="Division.cs" />
+    <Compile Include="Dynamic\GameStrategy.cs" />
+    <Compile Include="Dynamic\LongestIncresingSubsequence.cs" />
     <Compile Include="Dynamic\SubsetDifference.cs" />
     <Compile Include="ElementOccursOnce.cs" />
     <Compile Include="Facebook\BirdTree.cs" />
