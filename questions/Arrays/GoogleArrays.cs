@@ -40,7 +40,7 @@ namespace ProgrammingQuestions.Arrays
                 {
                     //check if the point belongs to the line
                     int y = (int)(a * i + b);
-                    if (j == y) 
+                    if (Math.Abs(j - y) < 0.5) 
                         array[i][j] = true;
                 }
             }
