@@ -4,6 +4,7 @@ bin/
 csx/
 doc/
 target/
+questions/.vs/
 *.bak
 *.exe
 *.dll
