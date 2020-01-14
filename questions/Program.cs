@@ -265,9 +265,9 @@ namespace ProgrammingQuestions
 
             //ProgrammingQuestions.Dynamic.GameStrategy.Test();
 
-            ProgrammingQuestions.SymbolTables.IntBSTTest.Test();
-            
+            //ProgrammingQuestions.SymbolTables.IntBSTTest.Test();
 
+            LeetCode.Trees.TreePath.Test();
 
         }
     }
