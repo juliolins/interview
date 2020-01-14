@@ -60,7 +60,7 @@ namespace LeetCode.Trees
                     continue;
                 }
 
-                if (node.left != null && node.left != previous && node.right != previous)
+                if (node.left != null && node.left != previous && (node.right != previous || node.right == null))
                 {
                     stack.Push(node.left);
                     previous = node;
